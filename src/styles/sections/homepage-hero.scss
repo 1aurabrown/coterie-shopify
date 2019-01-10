@@ -1,5 +1,27 @@
 .homepage-hero {
 
+  &__button {
+    display: block;
+    margin: 15px auto 15px 0;
+    line-height: 4.6rem;
+    width: 100%;
+  }
+
+  @include media-query($small) {
+    &__copy-container {
+      margin: $mobile-margin;
+    }
+    &__heading {
+      margin: $mobile-spacing 0;
+    }
+    &__subline {
+      margin: $mobile-spacing 0;
+    }
+    &__buttons {
+      margin-bottom: 72px;
+    }
+  }
+
   @include media-query($medium-up) {
     &__section {
       position: relative;
@@ -24,9 +46,6 @@
       margin-bottom: 72px;
     }
     &__button {
-      display: block;
-      margin: 15px auto 15px 0;
-      line-height: 4.6rem;
       width: 230px;
     }
   }
