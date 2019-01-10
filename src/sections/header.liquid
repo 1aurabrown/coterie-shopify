@@ -11,7 +11,8 @@
   - Home page only: only shows on the home page
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header" class="header">
-  <header role="banner">
+  <div class="header__hamburger medium-up--hide" data-menu-toggle>{% include 'icon-hamburger' %}</div>
+  <header role="banner" class="header__logo">
     {% if template.name == 'index' %}
       <h1>
     {% else %}
@@ -28,7 +29,10 @@
 
   </header>
 
-  <nav role="navigation">
+  <div class="medium-up--hide header__icon-align">
+  </div>
+
+  <nav role="navigation" class="header__nav" data-mobile-nav>
     <ul>
       {% for link in linklists[section.settings.menu].links %}
         {% if link.links != blank %}

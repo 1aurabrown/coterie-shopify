@@ -5,6 +5,11 @@ import 'lazysizes/plugins/bgset/ls.bgset';
 import 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
 
+import {load} from '@shopify/theme-sections';
+
+
+import '../sections/header';
+
 import '../../styles/theme.scss';
 import '../../styles/theme.scss.liquid';
 
@@ -22,3 +27,7 @@ if (cookiesEnabled()) {
     'supports-cookies',
   );
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  load('*');
+});

@@ -4,11 +4,6 @@
   width: 25px;
   height: 25px;
 
-  path {
-    fill: none;
-    stroke: currentColor;
-  }
-
   .no-svg & {
     display: none;
   }
