@@ -50,6 +50,8 @@ $grid-large: 992px;
 $grid-widescreen: 1200px;
 $grid-max-width: 1500px;
 $grid-gutter: 30px;
+$grid-gutter-mobile: $grid-gutter;
+$grid-gutter-desktop: $grid-gutter;
 
 // Breakpoints used with the media-query mixin
 $small: 'small';

@@ -1,0 +1,48 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-hero" class="homepage-hero">
+  <div class="homepage-hero__image">
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "max-blocks": 2;
+    "blocks": [
+      {
+        "type": "button",
+        "name": "CTA Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }
+    ]
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background-image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "The Coterie Diaper"
+      },
+      {
+        "type": "textarea",
+        "id": "subline",
+        "label": "Subline",
+        "default": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
+      },
+    ]
+  }
+{% endschema %}

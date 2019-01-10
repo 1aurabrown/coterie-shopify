@@ -1,0 +1,29 @@
+
+@mixin responsive-typography($breakpoint: '') {
+  // sass-lint:disable no-important
+  .#{$breakpoint}body-m {
+    @include body();
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+  }
+  .#{$breakpoint}body-s {
+    @include body();
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+  }
+  .#{$breakpoint}body-l {
+    @include body();
+    font-size: 2.0rem;
+    line-height: 3.2rem;
+  }
+}
+
+
+/*================ Build Responsive Grid Classes ================*/
+
+@include responsive-typography();
+@each $breakpoint in $breakpoint-has-widths {
+  @include media-query($breakpoint) {
+    @include responsive-typography('#{$breakpoint}--');
+  }
+}

@@ -2,15 +2,6 @@ html {
   font-size: 62.5%;
 }
 
-body {
-  font-family: $font-body;
-  font-weight: $font-body-weight;
-  font-style: $font-body-style;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-  color: $color-body-text;
-}
-
 h1,
 h2,
 h3,
@@ -33,6 +24,18 @@ select {
 
 a:focus {
   color: inherit;
+}
+
+
+@mixin body() {
+  font-family: $font-body;
+  font-weight: $font-body-weight;
+  font-style: $font-body-style;
+  color: $color-body-text;
+}
+
+.body {
+  @include body();
 }
 
 @mixin headline() {
