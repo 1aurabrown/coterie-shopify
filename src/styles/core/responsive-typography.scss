@@ -5,22 +5,17 @@
   .#{$breakpoint}headline-l {
     @include headline();
     font-size: 4.3rem;
-    line-height: 6.1rem;
+    line-height: 5.2rem;
   }
   .#{$breakpoint}body-m {
     @include body();
     font-size: 1.5rem;
-    line-height: 2.7rem;
-  }
-  .#{$breakpoint}body-s {
-    @include body();
-    font-size: 1.5rem;
-    line-height: 2.7rem;
+    line-height: 2.4rem;
   }
   .#{$breakpoint}body-l {
     @include body();
     font-size: 2.0rem;
-    line-height: 3.2rem;
+    line-height: 2.7rem;
   }
 }
 

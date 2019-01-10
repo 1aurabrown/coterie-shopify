@@ -13,3 +13,11 @@ body,
 html {
   height: 100%;
 }
+
+hr {
+  border: none;
+  background: $color-body-text;
+  height: 1px;
+  width: 100px;
+  margin: $desktop-spacing auto;
+}
