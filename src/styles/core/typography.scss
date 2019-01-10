@@ -34,27 +34,18 @@ a:focus {
   color: $color-body-text;
 }
 
+@mixin headline() {
+  font-family: $font-heading;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
 .body {
   @include body();
 }
 
-@mixin headline() {
-  font-family: $font-heading;
-  text-transform: uppercase;
-}
 .headline {
   @include headline();
-}
-.headline-l {
-  @extend .headline;
-  @include media-query($small) {
-    font-size: 2.8rem;
-    line-height: 3.6rem;
-  }
-  @include media-query($medium-up) {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
 }
 
 a, a:hover, a:active, a:visited {

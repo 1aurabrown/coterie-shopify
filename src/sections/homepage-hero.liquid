@@ -1,12 +1,33 @@
-<section data-section-id="{{ section.id }}" data-section-type="homepage-hero" class="homepage-hero">
+<section data-section-id="{{ section.id }}" data-section-type="homepage-hero" class="homepage-hero__section">
   <div class="homepage-hero__image">
+    {% include 'responsive-image', image: section.settings.image %}
+  </div>
+  <div class="homepage-hero__copy-container">
+    <div class="homepage-hero__copy">
+
+      <div class="homepage-hero__heading headline-l">
+        {{ section.settings.heading }}
+      </div>
+      <div class="homepage-hero__subline copy-m">
+        {{ section.settings.subline }}
+      </div>
+      <div class="homepage-hero__buttons copy-m">
+        {% for block in section.blocks %}
+          <button class="button button--black homepage-hero__button"><a href="{{ block.settings.url }}">
+            {{ block.settings.label }}
+          </a></button>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 
+
 {% schema %}
   {
+    "class": "homepage-hero",
     "name": "Hero",
-    "max-blocks": 2;
+    "max_blocks": 2,
     "blocks": [
       {
         "type": "button",
@@ -24,12 +45,12 @@
           }
         ]
       }
-    ]
+    ],
     "settings": [
       {
         "type": "image_picker",
-        "id": "background-image",
-        "label": "Background Image"
+        "id": "image",
+        "label": "Image"
       },
       {
         "type": "text",
@@ -42,7 +63,13 @@
         "id": "subline",
         "label": "Subline",
         "default": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
-      },
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "category": "Homepage"
+      }
     ]
   }
 {% endschema %}

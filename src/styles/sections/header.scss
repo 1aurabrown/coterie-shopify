@@ -1,4 +1,6 @@
 #shopify-section-header {
+  position: absolute;
+  z-index: 2;
   padding: $desktop-margin 45px;
   .header {
     display: flex;

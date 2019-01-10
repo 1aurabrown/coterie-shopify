@@ -1,21 +1,20 @@
 $desktop-margin: 47px;
+$desktop-spacing: 43px;
 
 $white: white;
 $black: black;
 
 $color-body-text: $black;
-$color-icon: var(--color-icon);
+$color-icon: $white;
 
 // Background colors
 $color-body: $white;
 
-$color-arc: var(--color-arc-background);
-$color-footer: var(--color-footer-background);
+$color-arc: $white;
+$color-footer: $black;
 
 // Other colors
-$color-form: var(--color-form);
-// $color-border: var(--color-border);
-
+$color-form: $white;
 
 // Placeholders
 $placeholder-color-foreground: #161d25;

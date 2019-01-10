@@ -1,6 +1,12 @@
 
 @mixin responsive-typography($breakpoint: '') {
   // sass-lint:disable no-important
+
+  .#{$breakpoint}headline-l {
+    @include headline();
+    font-size: 4.3rem;
+    line-height: 6.1rem;
+  }
   .#{$breakpoint}body-m {
     @include body();
     font-size: 1.5rem;

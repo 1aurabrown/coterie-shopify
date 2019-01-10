@@ -8,4 +8,12 @@
   text-decoration: none;
   user-select: none;
   appearance: none;
+  a {
+    text-decoration: none;
+  }
+}
+
+.button--black {
+  background: $black;
+  color: $white;
 }
