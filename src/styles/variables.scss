@@ -1,9 +1,14 @@
+$desktop-margin: 47px;
 
-$color-body-text: var(--color-body-text);
+$white: white;
+$black: black;
+
+$color-body-text: $black;
 $color-icon: var(--color-icon);
 
 // Background colors
-$color-body: var(--color-main-background);
+$color-body: $white;
+
 $color-arc: var(--color-arc-background);
 $color-footer: var(--color-footer-background);
 

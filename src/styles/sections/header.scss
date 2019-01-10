@@ -1,18 +1,34 @@
 #shopify-section-header {
-
-}
-
-.template-password header {
-  padding: 40px;
-  img {
-    display: block;
-    width: 103px;
-    height: auto
+  padding: $desktop-margin 45px;
+  .header {
+    display: flex;
+    align-items: flex-end;
+  }
+  header {
+    img {
+      max-height: 20px;
+      width: auto;
+      display: block;
+    }
+  }
+  header, nav {
+    vertical-align: baseline;
+    line-height: 1;
+  }
+  nav a {
+    text-decoration: none;
+  }
+  nav ul {
+    padding: 0;
+    margin: 0 0 0 135px;
+  }
+  nav li {
+    display: inline-block;
+    margin: 0 0 0 65px;
   }
 }
 
 @include media-query($small) {
-
   .template-password header {
     padding: 28px;
     img {
