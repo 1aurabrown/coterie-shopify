@@ -30,18 +30,15 @@ $line-height-compensate: 12px;
       bottom: 0;
       right: 0;
       min-width: 33%;
-      margin-top: $mobile-margin;
+      margin-top: $desktop-margin;
       margin-bottom: 72px;
     }
     &__copy {
       max-width: 257px;
       margin-right: $desktop-margin;
     }
-    &__heading {
-      margin-bottom: $desktop-spacing - $line-height-compensate;
-    }
     &__subline {
-      margin: $desktop-spacing 0;
+      margin: 25px 0 36px;
     }
   }
 

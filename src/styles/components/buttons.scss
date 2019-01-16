@@ -11,6 +11,10 @@
   a {
     text-decoration: none;
   }
+  height: 46px;
+  @include media-query($small) {
+    max-width: 230px;
+  }
 }
 
 .button--black {

@@ -5,7 +5,8 @@
   .#{$breakpoint}headline-l {
     @include headline();
     font-size: 4.3rem;
-    line-height: 5.2rem;
+    line-height: 5.1rem;
+    letter-spacing: .15rem;
   }
   .#{$breakpoint}body-m {
     @include body();
@@ -15,7 +16,7 @@
   .#{$breakpoint}body-l {
     @include body();
     font-size: 2.0rem;
-    line-height: 2.7rem;
+    line-height: 2.4rem;
   }
 }
 
