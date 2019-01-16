@@ -26,12 +26,12 @@
   }
   @include media-query($small) {
     &__copy {
-      padding: $mobile-margin;
+      margin: $mobile-margin;
     }
     &__image {
     }
     &__subline {
-      margin: 14px 0;
+      margin: 14px 0 42px 0;
     }
   }
 }
