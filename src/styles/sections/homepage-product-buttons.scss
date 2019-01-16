@@ -1,0 +1,23 @@
+.homepage-buttons {
+  &__button {
+    display: block;
+    text-align: center;
+    padding: 24px;
+    text-decoration: none;
+  }
+  &__heading {
+    padding: 24px;
+  }
+  @include media-query($medium-up) {
+    &__heading {
+      padding: 64px;
+    }
+    &__button {
+      padding: 103px 50px;
+      span {
+        display: block;
+
+      }
+    }
+  }
+}

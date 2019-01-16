@@ -8,15 +8,20 @@
     line-height: 5.1rem;
     letter-spacing: .15rem;
   }
-  .#{$breakpoint}body-m {
-    @include body();
+  .#{$breakpoint}body-s {
+    font-family: $font-body;
     font-size: 1.5rem;
     line-height: 2.4rem;
   }
-  .#{$breakpoint}body-l {
-    @include body();
+  .#{$breakpoint}body-m {
+    font-family: $font-body;
     font-size: 2.0rem;
     line-height: 2.4rem;
+  }
+  .#{$breakpoint}body-xl {
+    font-family: $font-body;
+    font-size: 3.8rem;
+    line-height: 4.8rem;
   }
 }
 
