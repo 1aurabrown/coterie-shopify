@@ -34,7 +34,9 @@
 
         li {
           display: inline-block;
-          margin-left: 65px;
+          &:not(:first-child) {
+            margin-left: 65px;
+          }
         }
       }
     }
