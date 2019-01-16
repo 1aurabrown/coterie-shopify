@@ -1,0 +1,48 @@
+$line-height-compensate: 12px;
+.homepage-hero {
+  &__button {
+    display: block;
+    margin: 15px auto 15px 0;
+    line-height: 4.6rem;
+    width: 100%;
+    max-width: 230px;
+  }
+
+  @include media-query($small) {
+
+    &__copy-container {
+      margin: $mobile-margin;
+    }
+    &__heading {
+      margin-bottom: $mobile-spacing - $line-height-compensate;
+    }
+    &__buttons {
+      margin: $mobile-spacing 0;
+    }
+  }
+
+  @include media-query($medium-up) {
+    &__section {
+      position: relative;
+    }
+    &__copy-container {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      min-width: 33%;
+      margin-top: $mobile-margin;
+      margin-bottom: 72px;
+    }
+    &__copy {
+      max-width: 257px;
+      margin-right: $desktop-margin;
+    }
+    &__heading {
+      margin-bottom: $desktop-spacing - $line-height-compensate;
+    }
+    &__subline {
+      margin: $desktop-spacing 0;
+    }
+  }
+
+}

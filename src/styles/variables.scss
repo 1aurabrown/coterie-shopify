@@ -1,16 +1,26 @@
+$desktop-margin: 47px;
+$desktop-spacing: 43px;
 
-$color-body-text: var(--color-body-text);
-$color-icon: var(--color-icon);
+$mobile-margin: 23px;
+$mobile-spacing: 21px;
+
+$white: white;
+$black: black;
+
+$color-body-text: $black;
+$color-icon: $white;
+
+$color-yellow-dark: #fdf1d8;
+$color-yellow-light: #FFF8E9;
 
 // Background colors
-$color-body: var(--color-main-background);
-$color-arc: var(--color-arc-background);
-$color-footer: var(--color-footer-background);
+$color-body: $white;
+
+$color-arc: $white;
+$color-footer: $black;
 
 // Other colors
-$color-form: var(--color-form);
-// $color-border: var(--color-border);
-
+$color-form: $white;
 
 // Placeholders
 $placeholder-color-foreground: #161d25;
@@ -45,6 +55,8 @@ $grid-large: 992px;
 $grid-widescreen: 1200px;
 $grid-max-width: 1500px;
 $grid-gutter: 30px;
+$grid-gutter-mobile: $grid-gutter;
+$grid-gutter-desktop: $grid-gutter;
 
 // Breakpoints used with the media-query mixin
 $small: 'small';

@@ -1,0 +1,26 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-text" class="homepage-text__section body-l">
+  <hr class="small--hide" />
+  {{ section.settings.text }}
+</section>
+
+
+{% schema %}
+  {
+    "class": "homepage-text",
+    "name": "Text Block",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+        "default": "We believe modern parents deserve quality products. By engineering a diaper that’s truly better in every way, delivered directly to your door, we hope to make your days a little bit easier and life a little bit softer."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Block",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

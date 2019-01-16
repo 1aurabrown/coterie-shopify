@@ -8,7 +8,19 @@
   }
 }
 
-
+/**
+ * Sets a media query for the specified breakpoint
+ *
+ * Accepts:
+ * - $media-query: {String} Breakpoint variable (list found in variables.scss)
+ *
+ * Usage:
+ * .selector {
+ *   @include media-query($medium-up) {
+ *     color: red;
+ *   }
+ * }
+ */
 /**
  * Sets a media query for the specified breakpoint
  *
@@ -36,6 +48,16 @@
         @content;
       }
     }
+  }
+}
+
+/*================ Responsive Float ===========================*/
+@mixin responsive-float-helper($breakpoint: '') {
+  .#{$breakpoint}float-left {
+    float: left;
+  }
+  .#{$breakpoint}float-right {
+    float: right;
   }
 }
 

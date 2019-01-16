@@ -18,7 +18,10 @@
 @import './core/media';
 @import './core/responsive-tables';
 @import './core/rte';
+
+// Typography
 @import './core/typography';
+@import './core/responsive-typography';
 
 // Components
 @import './components/buttons';
@@ -30,7 +33,11 @@
 // Sections
 @import './sections/email-capture';
 @import './sections/header';
-@import './sections/footer'
+@import './sections/footer';
+@import './sections/homepage-hero';
+@import './sections/homepage-text';
 
 // Templates
+@import './templates/index';
+
 
