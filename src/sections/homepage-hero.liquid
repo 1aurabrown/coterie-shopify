@@ -4,17 +4,17 @@
     {% include 'responsive-image', image: section.settings.desktop_image, wrapper_class: 'small--hide' %}
   </div>
   <div class="homepage-hero__copy-container">
-    <div class="homepage-hero__copy">
+    <div class="homepage-hero__copy homepage-copy">
 
-      <div class="homepage-hero__heading headline-l">
+      <div class="homepage-hero__heading headline-l homepage-copy__heading">
         {{ section.settings.heading }}
       </div>
-      <div class="homepage-hero__subline copy-m">
+      <div class="homepage-hero__subline copy-m homepage-copy__subline">
         {{ section.settings.subline }}
       </div>
-      <div class="homepage-hero__buttons copy-m">
+      <div class="homepage-hero__buttons copy-m homepage-copy__buttons">
         {% for block in section.blocks %}
-          <button class="button button--black homepage-hero__button"><a href="{{ block.settings.url }}">
+          <button class="button button--black homepage-hero__button homepage-copy__button"><a href="{{ block.settings.url }}">
             {{ block.settings.label }}
           </a></button>
         {% endfor %}

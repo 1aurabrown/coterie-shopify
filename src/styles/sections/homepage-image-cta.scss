@@ -1,24 +1,20 @@
-.homepage-hero {
-
-
+.homepage-image-cta {
   @include media-query($medium-up) {
     &__section {
       position: relative;
+
     }
     &__copy-container {
       position: absolute;
       bottom: 0;
       right: 0;
-      margin-top: $desktop-margin;
-      margin-bottom: 72px;
-      margin-right: 14%;
+      margin: 40px 14% 40px 0;
     }
     &__copy {
-      max-width: 257px;
+      max-width: 288px;
     }
     &__subline {
-      margin-top: 25px;
+      margin-top: 68px;
     }
   }
-
 }

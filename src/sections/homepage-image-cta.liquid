@@ -1,0 +1,70 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-image-cta" class="homepage-image-cta__section">
+  <div class="homepage-image-cta__image">
+    {% include 'responsive-image', image: section.settings.mobile_image, wrapper_class: 'medium-up--hide' %}
+    {% include 'responsive-image', image: section.settings.desktop_image, wrapper_class: 'small--hide' %}
+  </div>
+  <div class="homepage-image-cta__copy-container">
+    <div class="homepage-image-cta__copy homepage-copy">
+      <div class="homepage-image-cta__heading homepage-copy__heading copy-l bold">
+        {{ section.settings.heading }}
+      </div>
+      <div class="homepage-image-cta__subline homepage-copy__subline copy-m">
+        {{ section.settings.subline }}
+      </div>
+      <div class="homepage-image-cta__buttons homepage-copy__buttons copy-m">
+        <button class="button background-dark-yellow homepage-copy__button homepage-image-cta__button"><a href="{{ block.settings.url }}">
+          {{ section.settings.cta }}
+        </a></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "class": "homepage-image-cta",
+    "name": "Image CTA",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "The Coterie Diaper"
+      },
+      {
+        "type": "textarea",
+        "id": "subline",
+        "label": "Subline",
+        "default": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Button Text",
+        "default": "Certifications"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image CTA",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

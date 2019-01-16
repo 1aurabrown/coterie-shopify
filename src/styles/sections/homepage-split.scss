@@ -26,12 +26,7 @@
   }
   @include media-query($small) {
     &__copy {
-      margin: $mobile-margin;
-    }
-    &__image {
-    }
-    &__subline {
-      margin: 14px 0 42px 0;
+      margin-bottom: 42px;
     }
   }
 }
