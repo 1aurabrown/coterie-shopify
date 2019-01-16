@@ -1,0 +1,73 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-split" class="homepage-split__section {% if section.settings.layout == 'text_first' %} reverse {% endif %}">
+  <div class="homepage-split__image {% if section.settings.inset %} inset {% endif %}">
+    {% include 'responsive-image', image: section.settings.mobile_image, wrapper_class: 'medium-up--hide' %}
+    {% include 'responsive-image', image: section.settings.desktop_image, wrapper_class: 'small--hide' %}
+  </div>
+  <div class="homepage-split__copy">
+    <div class="homepage-split__heading copy-l bold">
+      {{ section.settings.heading }}
+    </div>
+    <div class="homepage-split__subline copy-m">
+      {{ section.settings.subline }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "class": "homepage-split",
+    "name": "Text & Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "inset",
+        "label": "Inset Image on Desktop",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "image_first",
+        "options": [
+          {
+            "label": "Image First",
+            "value": "image_first"
+          },
+          {
+            "label": "Text First",
+            "value": "text_first"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "The Coterie Diaper"
+      },
+      {
+        "type": "textarea",
+        "id": "subline",
+        "label": "Subline",
+        "default": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text & Image",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

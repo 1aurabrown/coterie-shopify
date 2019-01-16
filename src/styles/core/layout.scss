@@ -19,7 +19,7 @@ hr {
   background: $color-body-text;
   height: 1px;
   width: 100px;
-  margin: $desktop-spacing auto;
+  margin: 50px auto;
 }
 
 .background-light-yellow {
@@ -28,4 +28,8 @@ hr {
 
 .background-dark-yellow {
   background: $color-yellow-dark;
+}
+
+.bold {
+  font-weight: bold;
 }
