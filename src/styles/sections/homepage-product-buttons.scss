@@ -9,7 +9,7 @@
     padding: 16px $mobile-margin;
   }
   @include media-query($medium-up) {
-    margin-bottom: 112px;
+    margin-bottom: $homepage-gap-desktop-m;
     &__heading {
       padding: 64px $desktop-margin;
     }

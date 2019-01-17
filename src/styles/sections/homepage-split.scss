@@ -1,4 +1,7 @@
 .homepage-split {
+  &__copy p {
+    margin: 0;
+  }
   @include media-query($medium-up) {
     &__section {
       display: flex;
@@ -11,7 +14,7 @@
     &__image {
       flex: 1;
       &.inset {
-        padding: 0 125px;
+        padding: 0 $homepage-inset-desktop - $desktop-margin 0 $homepage-inset-desktop;
       }
     }
     &__copy {
@@ -21,18 +24,11 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      p {
-        margin: 0;
-      }
+
     }
 
     + .homepage-split {
-      margin-top: 163px;
-    }
-  }
-  @include media-query($small) {
-    &__copy {
-      margin-bottom: 42px;
+      margin-top: $homepage-gap-desktop-l;
     }
   }
 }
@@ -40,7 +36,7 @@
 .homepage-split--centered.homepage-split {
   @include media-query($medium-up) {
     .homepage-split__image {
-      padding-left: 125px;
+      padding-left: $homepage-inset-desktop;
     }
     .homepage-split__copy {
       padding: $desktop-margin;

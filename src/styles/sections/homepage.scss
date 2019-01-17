@@ -12,8 +12,10 @@
       margin-top: 14px;
     }
     &__buttons {
-      width: 100%;
       margin-top: $mobile-margin;
+    }
+    &__button {
+      width: 100%;
     }
   }
 }

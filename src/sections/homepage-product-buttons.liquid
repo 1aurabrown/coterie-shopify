@@ -9,7 +9,7 @@
       {% assign product = all_products[block.settings.product] %}
       <a href="{{ product | url }}" alt="{{ product.title }}" class="homepage-buttons__button medium-up--one-half one-whole text-center {% cycle 'background-dark-yellow medium-up--float-left', 'background-light-yellow medium-up--float-right' %}">
         {% if section.settings.prefix.size > 0 %}
-          <span class="bold medium-up--hide">{{ section.settings.prefix }}</span>
+          <span class="bold small--hide">{{ section.settings.prefix }}</span>
         {% endif %}
         <span>{{ product.title }}</span>
       </a>

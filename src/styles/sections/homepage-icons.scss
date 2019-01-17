@@ -1,6 +1,6 @@
 .homepage-icons {
   @include media-query($medium-up) {
-    margin: 125px 0;
+    margin: $homepage-gap-desktop-m 0;
   }
   @include media-query($small) {
     margin: 40px 0;
