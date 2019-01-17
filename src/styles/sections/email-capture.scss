@@ -1,11 +1,8 @@
-#shopify-section-email-capture .email-capture {
-  text-align: center;
-  max-width: 750px;
-  margin: 20px 0;
-  .email-capture--success {
+.email-capture {
+  .email-capture__success {
     display: none;
   }
-  .error-message {
+  .email-capture__error {
     display: none;
     position: absolute;
     top: 100%;
@@ -17,67 +14,40 @@
     }
   }
   &[data-state=success] {
-    .email-capture--success {
+    .email-capture__success {
       display: block;
     }
-    .email-capture--cta {
-      display: none;
+  }
+  .email-capture__success {
+
+  }
+
+  &__email {
+    width: 200px;
+  }
+  &__inputs {
+    margin: 27px auto 0;
+    padding-bottom: 8px;
+    display: inline-block;
+    border-bottom: 1px solid $color-form;
+  }
+  &__input {
+    display: inline-block;
+    color: $color-form;
+  }
+  &__button {
+    padding: 0;
+    path {
+      fill: currentColor;
     }
   }
-  .email-capture--cta {
-    position: relative;
-    h2 {
-      margin-bottom: 48px;
-    }
-  }
-  .email-capture--success {
-    h2 {
-      margin-bottom: 130px;
-    }
-  }
-  p {
-    margin: 0;
-  }
-  hr {
+  &__input, &__button {
     border: none;
-    background: $color-body-text;
-    height: 2px;
-    width: 32px;
-    margin: 25px auto;
+    background: transparent;
+    color: $color-form;
   }
-  .copy {
-    margin: auto;
-  }
-  form {
-    input.email-capture--email {
-      width: 200px;
-    }
-    .email-capture--inputs {
-      margin: 27px auto 0;
-      padding-bottom: 8px;
-      display: inline-block;
-      border-bottom: 1px solid $color-form;
-    }
-    input {
-      display: inline-block;
-      color: $color-form;
-    }
-    button {
-      padding: 0;
-      path {
-        fill: currentColor;
-      }
-    }
-    input, button {
-      border: none;
-      background: transparent;
-    }
-    input, button {
-      color: $color-form;
-    }
-    input::placeholder {
-      color: $color-form;
-    }
+  &__input::placeholder {
+    color: $color-form;
   }
 
 }
@@ -85,27 +55,6 @@
 
 @include media-query($small) {
   #shopify-section-email-capture .email-capture {
-    .email-capture--cta .copy {
-      max-width: 230px;
-    }
-    hr {
-      margin: 30px auto;
-    }
-    form {
-      .email-capture--inputs {
-        margin-top: 45px;
-      }
-    }
-    .email-capture--cta {
-      h2 {
-        margin-bottom: 48px;
-      }
-    }
-    .email-capture--success {
-      h2 {
-        margin-bottom:76px;
-      }
-      padding-bottom: 100px;
-    }
+
   }
 }

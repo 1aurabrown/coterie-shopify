@@ -6,60 +6,40 @@
   <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f6d39ea1bd8d904e503fb953e_d1a5564780" tabindex="-1" value=""></div>
 {% endcapture %}
 
-<div class="email-capture" data-section-id="{{ section.id }}" data-section-type="email-capture" data-enable-history-state="true">
-  <div class="email-capture--cta">
-    <form method="POST" action="{{ action }}" novalidate="">
-      <h2 class="headline-l small--hide">{{ section.settings.cta_headline_desktop }}</h2>
-      <h2 class="headline-l medium-up--hide">{{ section.settings.cta_headline_mobile }}</h2>
-      <hr>
-      <p class="copy">{{ section.settings.cta_copy }}</p>
-      <div class="email-capture--inputs">
+<div class="email-capture__section" data-section-id="{{ section.id }}" data-section-type="email-capture" data-enable-history-state="true">
+  <div class="body-m small--hide">{{ section.settings.text }}</div>
+  <form method="POST" action="{{ action }}" novalidate="">
+    <input type="hidden" name="u" value="{{ u }}">
+    <input type="hidden" name="id" value="{{ id }}">
+    <input class="email-capture__email" placeholder="{{ section.settings.placeholder }}" type="email" value="" name="EMAIL" id="mce-EMAIL" />
+    {{ hidden_input }}
+    <button class="email-capture__button" type="submit" >
+      {% include 'submit-arrow' %}
+    </button>
+    <div class="email-capture__error"><small>Please check the email address you entered.</small></div>
+  </form>
 
-        <input type="hidden" name="u" value="{{ u }}">
-        <input type="hidden" name="id" value="{{ id }}">
-        <input class="email-capture--email" placeholder="{{ section.settings.placeholder }}" type="email" value="" name="EMAIL" id="mce-EMAIL" />
-        <button class="email-capture--submit" type="submit" >
-          {% include 'submit-arrow' %}
-        </button>
-      </div>
-      {{ hidden_input }}
-    </form>
-    <div class="copy error-message"><small>Please check the email address you entered.</small></div>
 
-  </div>
 
-  <div class="email-capture--success">
-    <h2 class="headline-l">{{ section.settings.confirmation_headline }}</h2>
-    <hr>
-    <p class="copy">{{ section.settings.confirmation_copy }}</p>
+  <div class="email-capture__success">
+    {{ section.settings.confirmation }}
   </div>
 </div>
 
 {% schema %}
   {
     "name": "Email Capture",
+    "class": "email-capture",
     "settings": [
       {
         "type": "header",
         "content": "Email Form"
       },
       {
-        "type": "richtext",
-        "id": "cta_headline_desktop",
-        "label": "CTA Headline Desktop",
-        "default": "<p>We started from scratch<br/>to reimagine everything<br/>a diaper could be.</p>"
-      },
-      {
-        "type": "richtext",
-        "id": "cta_headline_mobile",
-        "label": "CTA Headline Mobile",
-        "default": "<p>We started<br/>from scratch<br/>to reimagine<br/>everything a<br/>diaper could be.<p/>"
-      },
-      {
-        "type": "textarea",
-        "id": "cta_copy",
-        "label": "CTA Copy",
-        "default": "Stay tuned for launch updates and special offers."
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Register to grow with us:"
       },
       {
         "type": "text",
@@ -68,20 +48,16 @@
         "default": "Your email"
       },
       {
-        "type": "header",
-        "content": "Confirmation"
-      },
-      {
         "type": "textarea",
-        "id": "confirmation_headline",
-        "label": "Confirmation Headline",
+        "id": "confirmation",
+        "label": "Confirmation Message",
         "default": "Thank you!"
-      },
+      }
+    ],
+    "presets": [
       {
-        "type": "textarea",
-        "id": "confirmation_copy",
-        "label": "Confirmation Copy",
-        "default": "Check your email for confirmation."
+        "name": "Email Capture",
+        "category": "Homepage"
       }
     ]
   }
