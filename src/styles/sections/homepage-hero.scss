@@ -9,9 +9,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      margin-top: $desktop-margin;
-      margin-bottom: 72px;
-      margin-right: 14%;
+      padding: $desktop-margin $desktop-margin 72px;
+      width: $homepage-text-width-desktop;
     }
     &__copy {
       max-width: 257px;

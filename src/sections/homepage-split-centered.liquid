@@ -1,22 +1,19 @@
 <section data-section-id="{{ section.id }}" data-section-type="homepage-split" class="homepage-split__section {% if section.settings.layout == 'text_first' %} reverse {% endif %}">
-  <div class="homepage-split__image {% if section.settings.inset %} inset {% endif %}">
+  <div class="homepage-split__image">
     {% include 'responsive-image', image: section.settings.mobile_image, wrapper_class: 'medium-up--hide' %}
     {% include 'responsive-image', image: section.settings.desktop_image, wrapper_class: 'small--hide' %}
   </div>
-  <div class="homepage-split__copy homepage-copy">
-    <h4 class="homepage-split__heading homepage-copy__heading body-m bold">
-      {{ section.settings.heading }}
-    </h4>
-    <div class="homepage-split__subline homepage-copy__subline body-s">
-      {{ section.settings.subline }}
+  <div class="homepage-split__copy homepage-split__copy--centered homepage-copy">
+    <div class="homepage-split__heading homepage-copy__heading body-m bold">
+      {{ section.settings.text }}
     </div>
   </div>
 </section>
 
 {% schema %}
   {
-    "class": "homepage-split",
-    "name": "Image / Heading / Subline",
+    "class": "homepage-split homepage-split--centered",
+    "name": "Image / Centered Text",
     "settings": [
       {
         "type": "image_picker",
@@ -30,21 +27,15 @@
       },
       {
         "type": "checkbox",
-        "id": "inset",
-        "label": "Inset Image on Desktop",
-        "default": false
+        "id": "mobile_hide",
+        "label": "Hide Image on Mobile",
+        "default": true
       },
       {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "The Coterie Diaper"
-      },
-      {
-        "type": "textarea",
-        "id": "subline",
-        "label": "Subline",
-        "default": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>@CoterieBaby</p><p>#CoterieBaby</p>"
       },
       {
         "type": "select",
@@ -65,7 +56,7 @@
     ],
     "presets": [
       {
-        "name": "Image / Heading / Subline",
+        "name": "Image / Centered Text",
         "category": "Homepage"
       }
     ]

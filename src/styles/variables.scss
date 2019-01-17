@@ -1,9 +1,12 @@
-$desktop-margin: 47px;
+$margin: 45px;
 
-$mobile-margin: 25px;
+$desktop-margin: $margin;
+$mobile-margin: $margin;
 
 $white: white;
 $black: black;
+
+$homepage-text-width-desktop: 38%;
 
 $color-body-text: $black;
 $color-icon: $white;

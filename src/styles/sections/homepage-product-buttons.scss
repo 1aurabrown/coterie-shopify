@@ -2,18 +2,19 @@
   &__button {
     display: block;
     text-align: center;
-    padding: 24px;
+    padding: 64px $mobile-margin;
     text-decoration: none;
   }
   &__heading {
-    padding: 24px;
+    padding: 16px $mobile-margin;
   }
   @include media-query($medium-up) {
+    margin-bottom: 112px;
     &__heading {
-      padding: 64px;
+      padding: 64px $desktop-margin;
     }
     &__button {
-      padding: 103px 50px;
+      padding: 82px $desktop-margin;
       span {
         display: block;
 
