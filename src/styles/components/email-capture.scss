@@ -18,36 +18,24 @@
       display: block;
     }
   }
-  .email-capture__success {
 
-  }
 
-  &__email {
-    width: 200px;
+  input {
+    color: $color-form-text;
   }
-  &__inputs {
-    margin: 27px auto 0;
-    padding-bottom: 8px;
-    display: inline-block;
-    border-bottom: 1px solid $color-form;
-  }
-  &__input {
-    display: inline-block;
-    color: $color-form;
-  }
-  &__button {
+  button {
     padding: 0;
     path {
       fill: currentColor;
     }
   }
-  &__input, &__button {
+  input, button {
     border: none;
-    background: transparent;
-    color: $color-form;
+    background-color: transparent;
+    color: $color-form-text;
   }
-  &__input::placeholder {
-    color: $color-form;
+  input::placeholder {
+    color: $color-form-text;
   }
 
 }

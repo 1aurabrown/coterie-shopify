@@ -1,13 +1,11 @@
-$margin: 45px;
-
-$desktop-margin: $margin;
-$mobile-margin: $margin;
+$desktop-margin: 60px;
+$mobile-margin: 40px;
 
 $white: white;
 $black: black;
 
 $homepage-text-width-desktop: 38%;
-$homepage-inset-desktop: 130px;
+$homepage-inset-desktop: $desktop-margin * 2;
 
 $homepage-gap-desktop-l: 163px;
 $homepage-gap-desktop-m: 110px;
@@ -26,7 +24,7 @@ $color-arc: $white;
 $color-footer: $black;
 
 // Other colors
-$color-form: $white;
+$color-form-text: #a5a5a5;
 
 // Placeholders
 $placeholder-color-foreground: #161d25;
