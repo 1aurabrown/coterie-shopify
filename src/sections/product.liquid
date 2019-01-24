@@ -13,8 +13,24 @@
     {% endfor %}
   </div>
 
-  <div class="product__text"><div class="product__text-inner">
-    <h1 class="body-xl product__title">{{ product.title }}</h1>
+  <div class="product__text">
+    <h1 class="body-xxl product__title">{{ product.title }}</h1>
+
+    <div data-price-wrapper class="product__heading product__price">
+      <span data-product-price>
+        {{ current_variant.price | money }}
+      </span>
+
+      {% if product.compare_at_price_max > product.price %}
+        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+        <s data-compare-price>
+          {% if current_variant.compare_at_price > current_variant.price %}
+            {{ current_variant.compare_at_price | money }}
+          {% endif %}
+        </s>
+      {% endif %}
+    </div>
+
     <div class="product__description body-s">
       <div class="rte">
         {{ product.description }}
@@ -40,9 +56,7 @@
                   value="{{ value | escape }}"
                   {% if option.selected_value == value %}checked="checked"{% endif %}>
                 </input>
-                <label for="{{ option.name }}--{{ forloop.index0 }}">
-                  {{ value }}
-                </label>
+                <label for="{{ option.name }}--{{ forloop.index0 }}">{{ value }}</label>
               {% endfor %}
             </div>
           </div>
@@ -54,35 +68,27 @@
           <option
             {% if variant == current_variant %}selected="selected"{% endif %}
             {% unless variant.available %}disabled="disabled"{% endunless %}
+            data-option-variant="{{ variant.id }}"
+            data-inventory="{{ variant.inventory_quantity }}"
             value="{{ variant.id }}">
               {{ variant.title }}
           </option>
         {% endfor %}
       </select>
 
-      <label for="Quantity" class="product__heading">{{ 'products.product.quantity' | t }}</label>
-      <div class="product__quantity-select">
-        <span>-</span>
-          <input class="hide" data-quantity type="number" id="Quantity" name="quantity" value="1" min="1">
-          <label for="quantity">1</label>
-        <span>+</span>
-      </div>
-      <div data-price-wrapper>
-        <span data-product-price>
-          {{ current_variant.price | money }}
-        </span>
+      <label for="Quantity" class="product__heading">
+        {{ 'products.product.quantity' | t }}
+      </label>
 
-        {% if product.compare_at_price_max > product.price %}
-          <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-          <s data-compare-price>
-            {% if current_variant.compare_at_price > current_variant.price %}
-              {{ current_variant.compare_at_price | money }}
-            {% endif %}
-          </s>
-        {% endif %}
+      <div class="product__quantity-select body-s">
+        <span data-decrease class="product__quantity-change">-</span>
+          <input class="hide" data-quantity-input type="number" id="Quantity" name="quantity" value="1" min="1">
+          <label for="quantity" class="product__quantity-label" data-quantity-label>1</label>
+        <span data-increase class="product__quantity-change">+</span>
       </div>
 
       <button
+        class="button button--black product__button"
         type="submit"
         name="add"
         data-add-to-cart
@@ -96,10 +102,7 @@
           </span>
       </button>
     </form>
-
-
-
-  </div></div>
+  </div>
   {% unless product == empty %}
     <script type="application/json" data-product-json>
       {{ product | json }}

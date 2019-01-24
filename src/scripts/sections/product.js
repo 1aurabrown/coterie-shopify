@@ -24,6 +24,11 @@ const selectors = {
   productPrice: '[data-product-price]',
   productThumbs: '[data-product-single-thumbnail]',
   singleOptionSelector: '[data-single-option-selector]',
+  optionVariant: '[data-option-variant]',
+  decreaseButton: '[data-decrease]',
+  increaseButton: '[data-increase]',
+  quantityInput: '[data-quantity-input]',
+  quantityLabel: '[data-quantity-label]'
 };
 
 const cssClasses = {
@@ -72,6 +77,15 @@ register('product', {
       `variantChange${this.namespace}`,
       this.updateAddToCartState.bind(this),
     );
+
+    this.$container.on('click' + this.namespace, selectors.decreaseButton,
+      this.decreaseQuantity.bind(this),
+    );
+
+    this.$container.on('click' + this.namespace, selectors.increaseButton,
+      this.increaseQuantity.bind(this),
+    );
+
     this.$container.on(
       `variantPriceChange${this.namespace}`,
       this.updateProductPrices.bind(this),
@@ -145,6 +159,24 @@ register('product', {
     );
     $newImage.removeClass(cssClasses.hide);
     $otherImages.addClass(cssClasses.hide);
+  },
+
+  increaseQuantity() {
+    const $variantOptions = $(selectors.optionVariant, this.container)
+    const $variant = $variantOptions.filter(`[data-option-variant="${this.variants.currentVariant.id}"]`)
+    const inventory = parseInt($variant.data().inventory)
+    const value = Math.min(parseInt($(selectors.quantityInput).val()) + 1, inventory);
+    this.setQuantity(value);
+  },
+
+  decreaseQuantity() {
+    const value = Math.max(parseInt($(selectors.quantityInput).val()) - 1, 1);
+    this.setQuantity(value);
+  },
+
+  setQuantity(value) {
+    $(selectors.quantityInput).val(value);
+    $(selectors.quantityLabel).text(value);
   },
 
   /**

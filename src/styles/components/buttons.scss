@@ -20,4 +20,7 @@
 .button--black {
   background: $black;
   color: $white;
+  &[disabled], &.disabled {
+    background: lighten($black, 45%);
+  }
 }

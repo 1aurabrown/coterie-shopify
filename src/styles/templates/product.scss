@@ -8,22 +8,22 @@
 .product {
   @include media-query($medium-up) {
     display: flex;
-    &__title {
-      padding: 50px 0 25px;
-    }
     &__images {
       width: 60%;
     }
     &__text {
       width: 40%;
-    }
-    &__text-inner {
       position: sticky;
       position: -webkit-sticky;
       top: 0  ;
       padding: 0 $desktop-margin;
     }
   }
+
+  &__quantity-select {
+    font-weight: bold;
+  }
+
   &__option-values {
 
     label {
@@ -43,34 +43,27 @@
   &__heading {
     @extend .body-s;
     font-weight: bold;
-    margin: 1em 0 0 0;
     display: block;
   }
+  &__title, &__heading {
+    margin: 1em 0 auto 0;
+  }
+  &__quantity-select {
+    margin-bottom: 1em;
+  }
+  &__quantity-change {
+    cursor: pointer;
+  }
+  &__quantity-label{
+    width: 1.5em;
+    text-align: center;
+    display: inline-block
+  }
+  &__price {
+    margin: 2em 0;
+  }
   &__description {
-    h1, h2, h3, h4, h5, h6 {
-      margin: 1em 0 0 0;
-    }
-    p {
-      margin: 0;
-    }
-    h1 {
-      @extend .body-l;
-    }
-    h2 {
-      @extend .body-m;
-    }
-    h3 {
-      @extend .body-s;
-    }
-    h4, h5, h6 {
-      @extend .body-xs;
-    }
-    h1, h2, h3, h4 {
-      font-weight: bold;
-    }
-    h5, h6 {
-      font-weight: normal;
-    }
+    @include text-styles('body-s' );
   }
 }
 
