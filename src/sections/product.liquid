@@ -13,7 +13,7 @@
     {% endfor %}
   </div>
 
-  <div class="product__text">
+  <div class="product__text"><div class="product__text-inner">
     <h1 class="body-xl product__title">{{ product.title }}</h1>
     <div class="product__description body-s">
       <div class="rte">
@@ -99,7 +99,7 @@
 
 
 
-  </div>
+  </div></div>
   {% unless product == empty %}
     <script type="application/json" data-product-json>
       {{ product | json }}
