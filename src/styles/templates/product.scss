@@ -1,22 +1,22 @@
-.template-product {
-  #shopify-section-header {
-    top: 0;
-    position: sticky;
-    position: -webkit-sticky;
-  }
-}
+@include sticky-header('.template-product');
+
 .product {
   @include media-query($medium-up) {
-    display: flex;
-    &__images {
+    &__image-wrapper {
       width: 60%;
     }
     &__text {
       width: 40%;
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0  ;
       padding: 0 $desktop-margin;
+    }
+  }
+
+  @include media-query($small) {
+    &__text {
+      padding: 0 $mobile-margin $mobile-margin;
+    }
+    &__button {
+      width: 100%;
     }
   }
 
