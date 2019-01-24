@@ -1,0 +1,71 @@
+.template-product {
+  #shopify-section-header {
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+  }
+}
+.product {
+  @include media-query($medium-up) {
+    display: flex;
+    &__title {
+      margin: 50px 0 25px;
+    }
+    &__images {
+      width: 60%;
+    }
+    &__text {
+      width: 40%;
+      padding: 0 $desktop-margin;
+    }
+  }
+  &__option-values {
+
+    label {
+      font-weight: bold;
+    }
+    label:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    input[type=radio] {
+      display: none;
+      &:checked + label {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+  &__heading {
+    @extend .body-s;
+    font-weight: bold;
+    margin: 1em 0 0 0;
+    display: block;
+  }
+  &__description {
+    h1, h2, h3, h4, h5, h6 {
+      margin: 1em 0 0 0;
+    }
+    p {
+      margin: 0;
+    }
+    h1 {
+      @extend .body-l;
+    }
+    h2 {
+      @extend .body-m;
+    }
+    h3 {
+      @extend .body-s;
+    }
+    h4, h5, h6 {
+      @extend .body-xs;
+    }
+    h1, h2, h3, h4 {
+      font-weight: bold;
+    }
+    h5, h6 {
+      font-weight: normal;
+    }
+  }
+}
+
