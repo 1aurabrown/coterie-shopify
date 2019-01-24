@@ -3,7 +3,10 @@ import {register} from '@shopify/theme-sections';
 
 const selectors = {
   menuToggle: '[data-menu-toggle]',
-  mobileNav: '[data-mobile-nav]'
+  mobileNav: '[data-mobile-nav]',
+  submenu: '[data-submenu]',
+  submenuLink: '[data-submenu-link]',
+  submenuDismiss: '[data-submenu-dismiss]'
 };
 
 const cssClasses = {
@@ -21,8 +24,22 @@ register('header', {
     this.$container = $(this.container);
     this.namespace = `.${this.id}`;
 
-    this.$container.on('click' + this.namespace, selectors.menuToggle, function() {
-      $(selectors.mobileNav, this.$container).toggleClass('visible');
+
+
+    this.$container.on('click' + this.namespace, selectors.submenu, function(e) {
+      console.log(e.currentTarget, e.target)
+      console.log($(e.target).parents(selectors.submenuDismiss).length)
+      if ($(e.target).is(selectors.submenuDismiss) ||
+        $(e.target).parents(selectors.submenuDismiss).length > 0 ){
+
+          $(e.currentTarget).removeClass('active');
+
+      } else if ($(e.target).is(selectors.submenuLink) ||
+          $(e.target).parents(selectors.submenuLink).length > 0 ){
+
+          e.preventDefault();
+          $(e.currentTarget).addClass('active');
+      }
     })
   },
 

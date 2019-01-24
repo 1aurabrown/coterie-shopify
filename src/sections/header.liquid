@@ -11,7 +11,42 @@
   - Home page only: only shows on the home page
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header" class="header">
-  <div class="header__hamburger medium-up--hide" data-menu-toggle>{% include 'icon-hamburger' %}</div>
+
+  <nav role="navigation" class="header__nav" data-mobile-nav>
+    <ul class="header__nav__primary">
+      {% for link in linklists[section.settings.menu].links %}
+        {% if link.links != blank %}
+          <li data-submenu class="header__nav__submenu">
+            <a href="{{ link.url }}" class="header__nav__submenu__link" data-submenu-link>
+              {{ link.title }}
+            </a>
+            <div class="header__nav__submenu__list" data-submenu-list>
+              <a class="header__nav__submenu__close" data-submenu-dismiss>
+                {% include 'icon-close'  %}
+              </a>
+              <ul>
+                {% for childlink in link.links %}
+                  <li>
+                    <a href="{{ childlink.url }}">
+                      {{ childlink.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+
+
   <header role="banner" class="header__logo">
     {% if template.name == 'index' %}
       <h1>
@@ -26,41 +61,11 @@
     {% else %}
       </div>
     {% endif %}
-
   </header>
 
-  <div class="medium-up--hide header__icon-align">
+  <div class="header__cart-button">
+    Cart [3]
   </div>
-
-  <nav role="navigation" class="header__nav" data-mobile-nav>
-    <ul>
-      {% for link in linklists[section.settings.menu].links %}
-        {% if link.links != blank %}
-          <li>
-            <a href="{{ link.url }}">
-              {{ link.title }}
-              {% include 'icon-arrow-down' %}
-            </a>
-            <ul>
-              {% for childlink in link.links %}
-                <li>
-                  <a href="{{ childlink.url }}">
-                    {{ childlink.title }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </li>
-        {% else %}
-          <li>
-            <a href="{{ link.url }}">
-              {{ link.title }}
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
 </section>
 
 {% if section.settings.logo != blank %}
