@@ -1,0 +1,35 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-split" class="homepage-large-text__section {% if section.settings.layout == 'text_first' %} reverse {% endif %}">
+  <div class="homepage-large-text__heading homepage-copy__heading medium-up--body-xl small--body-l bold">
+    {{ section.settings.heading }}
+  </div>
+  <div class="homepage-large-text__text homepage-copy__heading medium-up--body-l small--body-s">
+    {{ section.settings.text }}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "class": "homepage-large-text",
+    "name": "Large Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Co•te•rie"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p><b>kōd-rē, kōderē/ noun</b></p><p>a small group of people with shared interests or tastes, in our case this means family.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Large Text",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

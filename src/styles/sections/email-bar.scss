@@ -1,0 +1,36 @@
+.email-bar {
+  .email-capture {
+    padding: $desktop-margin;
+    position: relative;
+    &__before {
+    }
+    &__form {
+      display: flex;
+      padding: 8px 0;
+      border-bottom: 1px solid $color-form-text;
+    }
+    &__email {
+      flex: 100% 0 1;
+      width: 100%;
+      margin-right: 27px;
+    }
+    &__success {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    &[data-state=success] {
+      .email-capture__form, .email-capture__before {
+        visibility: hidden;
+      }
+    }
+    @include media-query($small) {
+      padding: $mobile-margin;
+      &__email {
+        margin-right: 15px;
+      }
+    }
+  }
+}

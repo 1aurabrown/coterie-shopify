@@ -1,11 +1,15 @@
-$desktop-margin: 47px;
-$desktop-spacing: 43px;
-
-$mobile-margin: 23px;
-$mobile-spacing: 21px;
+$desktop-margin: 60px;
+$mobile-margin: 40px;
 
 $white: white;
 $black: black;
+
+$homepage-text-width-desktop: 38%;
+$homepage-inset-desktop: $desktop-margin * 2;
+
+$homepage-gap-desktop-l: 163px;
+$homepage-gap-desktop-m: 110px;
+$homepage-gap-desktop-s: 90px;
 
 $color-body-text: $black;
 $color-icon: $white;
@@ -20,7 +24,7 @@ $color-arc: $white;
 $color-footer: $black;
 
 // Other colors
-$color-form: $white;
+$color-form-text: #a5a5a5;
 
 // Placeholders
 $placeholder-color-foreground: #161d25;

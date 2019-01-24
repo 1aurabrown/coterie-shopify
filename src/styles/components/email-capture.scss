@@ -1,0 +1,48 @@
+.email-capture {
+  .email-capture__success {
+    display: none;
+  }
+  .email-capture__error {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
+  &[data-state="error"] {
+    .error-message {
+      display: block;
+    }
+  }
+  &[data-state=success] {
+    .email-capture__success {
+      display: block;
+    }
+  }
+
+
+  input {
+    color: $color-form-text;
+  }
+  button {
+    padding: 0;
+    path {
+      fill: currentColor;
+    }
+  }
+  input, button {
+    border: none;
+    background-color: transparent;
+    color: $color-form-text;
+  }
+  input::placeholder {
+    color: $color-form-text;
+  }
+
+}
+
+
+@include media-query($small) {
+  #shopify-section-email-capture .email-capture {
+
+  }
+}

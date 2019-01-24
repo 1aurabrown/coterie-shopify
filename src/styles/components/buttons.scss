@@ -11,6 +11,10 @@
   a {
     text-decoration: none;
   }
+  height: 4.6rem;
+  @include media-query($medium-up) {
+    width: 230px;
+  }
 }
 
 .button--black {

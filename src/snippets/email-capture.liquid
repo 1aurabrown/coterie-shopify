@@ -1,0 +1,24 @@
+{% assign action = 'https://coterie.us19.list-manage.com/subscribe/post' %}
+{% assign u = 'f6d39ea1bd8d904e503fb953e' %}
+{% assign id = 'd1a5564780' %}
+
+{% capture hidden_input %}
+  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f6d39ea1bd8d904e503fb953e_d1a5564780" tabindex="-1" value=""></div>
+{% endcapture %}
+
+<div class="email-capture {{ class }}">
+  <div class="email-capture__before">{{ before_html }}</div>
+  <form class="email-capture__form" method="POST" action="{{ action }}" novalidate="">
+    <input type="hidden" name="u" value="{{ u }}">
+    <input type="hidden" name="id" value="{{ id }}">
+    <input class="email-capture__email {{ input_class }}" placeholder="{{ section.settings.placeholder }}" type="email" value="" name="EMAIL" id="mce-EMAIL" />
+    {{ hidden_input }}
+    <button class="email-capture__button {{ button_class }}" type="submit" >
+      {% include 'submit-arrow' %}
+    </button>
+    <div class="email-capture__error"><small>Please check the email address you entered.</small></div>
+  </form>
+  <div class="email-capture__success">
+    {{ success_html }}
+  </div>
+</div>

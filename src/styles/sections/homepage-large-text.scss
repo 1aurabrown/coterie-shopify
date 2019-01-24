@@ -1,0 +1,18 @@
+.homepage-large-text {
+  p {
+    margin: 0;
+  }
+  @include media-query($medium-up) {
+    &__section {
+      padding: 0 $homepage-inset-desktop;
+      margin: $homepage-gap-desktop-m 0;
+
+    }
+  }
+  @include media-query($small) {
+    &__section {
+      padding: 20px $mobile-margin;
+      margin: $mobile-margin 0;
+    }
+  }
+}

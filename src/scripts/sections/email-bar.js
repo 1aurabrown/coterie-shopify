@@ -6,8 +6,7 @@ const selectors = {
   form: 'form'
 };
 
-
-register('email-capture', {
+register('email-bar', {
   onLoad() {
     this.$container = $(this.container);
     onSignupSubmit(this.$container, selectors.form);
