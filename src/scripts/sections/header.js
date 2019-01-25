@@ -3,7 +3,9 @@ import {register} from '@shopify/theme-sections';
 
 const selectors = {
   menuToggle: '[data-menu-toggle]',
-  mobileNav: '[data-mobile-nav]'
+  submenu: '[data-submenu]',
+  submenuLink: '[data-submenu-link]',
+  submenuDismiss: '[data-submenu-dismiss]'
 };
 
 const cssClasses = {
@@ -21,9 +23,41 @@ register('header', {
     this.$container = $(this.container);
     this.namespace = `.${this.id}`;
 
+
     this.$container.on('click' + this.namespace, selectors.menuToggle, function() {
-      $(selectors.mobileNav, this.$container).toggleClass('visible');
-    })
+      this.showSubnav($(selectors.submenu).first())
+    }.bind(this))
+
+    this.$container.on('click' + this.namespace, selectors.submenu, this.showHideSubmenu.bind(this))
+  },
+
+  showHideSubmenu(e) {
+    if ($(e.target).is(selectors.submenuDismiss) ||
+        $(e.target).parents(selectors.submenuDismiss).length > 0 ){
+
+          this.hideSubnav($(e.currentTarget));
+
+      } else if ($(e.target).is(selectors.submenuLink) ||
+        $(e.target).parents(selectors.submenuLink).length > 0 ){
+          e.preventDefault();
+          if ($(e.currentTarget).hasClass('active')) {
+            this.hideSubnav($(e.currentTarget));
+          } else {
+            this.showSubnav($(e.currentTarget));
+          }
+      }
+  },
+
+  showSubnav($el) {
+    $('body').css({ overflow: 'hidden' })
+    this.$container.addClass('subnav-active');
+    $el.addClass('active');
+  },
+
+  hideSubnav($el) {
+    $('body').css({ overflow: 'unset' })
+    this.$container.removeClass('subnav-active');
+    $el.removeClass('active');
   },
 
   /**

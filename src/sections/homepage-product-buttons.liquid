@@ -4,7 +4,7 @@
     {{ section.settings.heading }}
   </div>
 
-  <div class="homepage-buttons__buttons medium-up--body-xl small--body-l clearfix">
+  <div class="homepage-buttons__buttons medium-up--body-xxl small--body-l clearfix">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
       <a href="{{ product | url }}" alt="{{ product.title }}" class="homepage-buttons__button medium-up--one-half one-whole text-center {% cycle 'background-dark-yellow medium-up--float-left', 'background-light-yellow medium-up--float-right' %}">
