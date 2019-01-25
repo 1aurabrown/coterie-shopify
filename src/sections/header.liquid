@@ -12,18 +12,20 @@
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header" class="header">
 
+  <div class="header__hamburger medium-up--hide" data-menu-toggle>{% include 'icon-hamburger' %}</div>
+
   <nav role="navigation" class="header__nav" data-mobile-nav>
     <ul class="header__nav__primary">
       {% for link in linklists[section.settings.menu].links %}
         {% if link.links != blank %}
           <li data-submenu class="header__nav__submenu">
-            <a href="{{ link.url }}" class="header__nav__submenu__link" data-submenu-link>
+            <a href="{{ link.url }}" class="header__nav__submenu__link header__nav__primary__link" data-submenu-link>
               {{ link.title }}
             </a>
-            <div class="header__nav__submenu__list" data-submenu-list>
-              <a class="header__nav__submenu__close" data-submenu-dismiss>
-                {% include 'icon-close'  %}
-              </a>
+            <div class="header__nav__submenu__list body-l" data-submenu-list>
+              {% include 'icon-close',
+                class: "header__nav__submenu__close",
+                attributes: 'data-submenu-dismiss' %}
               <ul>
                 {% for childlink in link.links %}
                   <li>
@@ -37,7 +39,7 @@
           </li>
         {% else %}
           <li>
-            <a href="{{ link.url }}">
+            <a class="header__nav__primary__link" href="{{ link.url }}">
               {{ link.title }}
             </a>
           </li>
@@ -63,8 +65,10 @@
     {% endif %}
   </header>
 
-  <div class="header__cart-button">
-    Cart [3]
+  <div class="header__right text-right">
+    <a class="header__cart-button" href="/cart">
+      Cart [{{ cart.item_count }}]
+    </a>
   </div>
 </section>
 

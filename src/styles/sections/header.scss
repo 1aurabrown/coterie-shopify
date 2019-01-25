@@ -1,15 +1,28 @@
+$header-height-mobile: 60px;
+@mixin mobile-header () {
+  height: $header-height-mobile;
+  display: flex;
+  align-items: center;
+  padding: 0 $mobile-margin;
+  width: 100%;
+}
+
+@mixin slider() {
+  position: fixed;
+  top: 0;
+  transition: left .5s;
+}
+
 #shopify-section-header {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   width: 100%;
   .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 45px;
-    height: 112px;
     a {
       text-decoration: none;
+    }
+    &__hamburger {
+      cursor: pointer;
     }
     &__logo {
       img {
@@ -21,39 +34,42 @@
 
       &__submenu {
         &__close {
+          display: block;
           position: absolute;
-          top: 50px;
-          right: 50px;
           cursor: pointer;
-          svg {
-            width: 15px;
-            height: 15px;
-          }
+          width: 14px;
+          height: 14px;
         }
         &__list {
-          padding: $desktop-margin;
-          z-index: 1;
-          position: fixed;
           background: $color-yellow-dark;
-          top: 0;
-          right: 100%;
-          width: 50%;
+          @include slider();
+          z-index: -1;
           height: 100%;
-          transform: translate3d(0, 0, 0);
-          transition: transform .5s;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          ul {
+            @include plain-list();
+            min-height: 50%;
+          }
           li {
             display: block;
+            &:not(:last-child) {
+              margin-bottom: 30px;
+            }
+          }
+        }
+        &.active {
+          .header__nav__submenu__link {
+            text-decoration: underline;
           }
         }
       }
-      &__submenu.active {
-        .header__nav__submenu__list {
-          transform: translate3d(100%, 0, 0);
-        }
-      }
-      &__primary {
-        @include plain-list();
 
+      &__primary {
+        position: relative;
+        z-index: 3;
+        @include plain-list();
         > li {
           display: inline-block;
           &:not(:first-child) {
@@ -66,16 +82,68 @@
   }
   @include media-query($medium-up) {
     .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 $desktop-margin;
+      height: 112px;
+
       &__logo, &__nav {
         vertical-align: baseline;
         line-height: 1;
+      }
+      &__nav__submenu{
+        &__list {
+          padding: $desktop-margin;
+          left: -50%;
+          width: 50%;
+        }
+        &__close {
+          top: 50px;
+          right: 50px;
+        }
+      }
+      &__nav__submenu.active .header__nav__submenu__list {
+        left: 0;
+      }
+      &__nav, &__right {
+        flex: 1;
       }
     }
   }
   @include media-query($small) {
     .header {
-      padding: 0 $mobile-margin/2;
-      height: 40px;
+      @include mobile-header();
+      justify-content: space-between;
+
+      &__nav{
+        &__primary, &__submenu__list {
+          left: -100%;
+        }
+        &__primary {
+          @include mobile-header()
+          @include slider()
+          height: $header-height-mobile;
+        }
+        &__submenu {
+          &__list {
+            width: 100%;
+            padding: $mobile-margin;
+          }
+          &__close {
+            top: $header-height-mobile / 2;
+            right: $header-height-mobile / 2;
+            transform: translate3d(50%, -50%, 0)
+          }
+        }
+      }
+
+
+      &.subnav-active .header__nav__primary,
+      &__nav__submenu.active .header__nav__submenu__list {
+        left: 0;
+      }
+
       &__logo {
         img {
           max-width: 80px;
