@@ -1,26 +1,22 @@
-<!-- /snippets/social-sharing.liquid -->
-<div class="social-sharing">
-  {% if settings.instagram_link %}
-    <a target="_blank" href="{{ settings.social_twitter_link }}">
+<div class="social-links">
+  {% if settings.social_facebook_link.size > 0 %}
+    <a target="_blank" href="{{ settings.social_facebook_link }}">
+      {% include 'icon-facebook' %}
+      <span class="visually-hidden">{{ shop.name }} on Facebook</span>
+    </a>
+  {% endif %}
+
+  {% if settings.social_instagram_link.size > 0 %}
+    <a target="_blank" href="{{ settings.social_instagram_link }}">
       {% include 'icon-instagram' %}
-      <span aria-hidden="true">{{ shop.name }} on Instagram</span>
       <span class="visually-hidden">{{ shop.name }} on Instagram</span>
     </a>
   {% endif %}
 
-  {% if settings.twitter_link %}
+  {% if settings.social_twitter_link.size > 0 %}
     <a target="_blank" href="{{ settings.social_twitter_link }}">
       {% include 'icon-twitter' %}
-      <span aria-hidden="true">{{ shop.name }} on Twitter</span>
       <span class="visually-hidden">{{ shop.name }} on Twitter</span>
-    </a>
-  {% endif %}
-
-  {% if settings.facebook_link %}
-    <a target="_blank" href="{{ settings.social_twitter_link }}">
-      {% include 'icon-facebook' %}
-      <span aria-hidden="true">{{ shop.name }} on Facebook</span>
-      <span class="visually-hidden">{{ shop.name }} on Facebook</span>
     </a>
   {% endif %}
 </div>
