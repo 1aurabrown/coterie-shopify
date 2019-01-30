@@ -1,26 +1,134 @@
-footer {
-  background: $color-footer;
-  color: $color-icon;
-  ul {
-    display: flex;
-    @include plain-list();
-    height: $footer-height-desktop;
-    justify-content: center;
-    align-items: center;
-    li {
-      margin: 0 25px;
-      .icon {
-        height: 25px;
-        width: 25px;
+#shopify-section-footer {
+  a {
+    text-decoration: none;
+  }
+
+  .footer {
+    padding: $desktop-margin;
+    color: $color-body-text;
+    padding-bottom: 200px;
+
+    &__top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @include media-query($small) {
+        flex-direction: column;
+      }
+    }
+    
+    &__left {
+      display: flex;
+      flex-direction: column;
+      
+      &__contact {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 60px;
+
+        &__prompt {
+          padding-bottom: 20px;
+        }
+      }
+
+      @include media-query($small) {
+        &__contact {
+          padding-bottom: 30px;
+        }
+      }
+    }
+
+    &__right {
+      display: flex;
+
+      &__menu {
+        padding-left: 120px;
+
+        ul {
+          @include plain-list();   
+          padding-top: 30px;       
+  
+          li {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10px;
+          }
+        }  
+      }
+
+      @include media-query($small) {
+        flex-direction: column;
+
+        &__menu {
+          padding: 20px 0;
+        }
+      }
+    }
+
+    &__social {
+      padding-bottom: 60px;
+  
+      .social-links {
+        a {
+          margin-right: 30px;
+        }
+      }
+
+      @include media-query($small) {
+        padding-top: 20px;
+      }
+    }
+    
+
+    &__legal {
+      display: flex;
+      justify-content: space-between;
+      border-top: solid 1px black;
+      padding-top: 40px;
+      
+      &__left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__right {
+        display: flex;
+    
+        a {
+          padding-left: 50px;
+        }
+      }
+
+      img {
+        max-width: 100px;
+        padding-bottom: 10px;
+      }
+
+      @include media-query($small) {
+        padding-top: 20px;
+        flex-direction: column;
+
+
+        &__right {
+          flex-direction: column;
+          padding-top: 5px;
+    
+          a {
+            padding: 5px 0; 
+          }
+        }
       }
     }
   }
-}
 
-@include media-query($small) {
-  footer {
-    ul {
-      height: $footer-height-mobile;
+  @include media-query($small) {
+    .footer {
+      padding: $mobile-margin;
+      padding-bottom: 200px;
+      
+      ul {
+      }
     }
   }
 }
