@@ -1,13 +1,13 @@
 <footer data-section-id="{{ section.id }}" data-section-type="footer" class="footer">
-  
+
   <div class="footer__top body-s">
     <div class="footer__left">
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
           <div class="footer__left__contact">
-            <strong class="footer__left__contact__prompt">{{ block.settings.label }}</strong>
+            <strong class="body-xs footer__left__contact__prompt">{{ block.settings.label }}</strong>
             {% assign address = block.settings.email_address %}
-            <a href="{{ 'mailto:' | append: address }}" class="footer__left__contact__address">
+            <a href="{{ 'mailto:' | append: address }}" class="footer__left__contact__address" target="_blank">
               {{ address }}
             </a>
           </div>
@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <div class="footer__right">
+    <div class="footer__right body-xs">
       {%- assign footer_linklist = section.settings.footer_linklist -%}
-      
+
       {% if linklists[footer_linklist].links.size > 0 %}
           {% for link in linklists[footer_linklist].links %}
           <div class="footer__right__menu">
@@ -48,7 +48,7 @@
   <div class="footer__legal body-xs">
     <div class="footer__legal__left">
       {{ "logo.svg" | asset_url | img_tag: shop.name }}
-      &copy;{{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}
+      <small>&copy;{{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}</small>
     </div>
 
     <div class="footer__legal__right">

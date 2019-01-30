@@ -4,7 +4,7 @@
   }
 
   .footer {
-    padding: $desktop-margin;
+    padding: 85px $desktop-margin;
     color: $color-body-text;
     padding-bottom: 200px;
 
@@ -12,16 +12,20 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding-bottom: 70px;
 
       @include media-query($small) {
         flex-direction: column;
       }
     }
-    
+
     &__left {
       display: flex;
       flex-direction: column;
-      
+      @include media-query($medium-up) {
+        align-self: flex-end;
+      }
+
       &__contact {
         display: flex;
         flex-direction: column;
@@ -46,15 +50,15 @@
         padding-left: 120px;
 
         ul {
-          @include plain-list();   
-          padding-top: 30px;       
-  
+          @include plain-list();
+          padding-top: 30px;
+
           li {
             display: flex;
             flex-direction: column;
             padding-bottom: 10px;
           }
-        }  
+        }
       }
 
       @include media-query($small) {
@@ -67,8 +71,6 @@
     }
 
     &__social {
-      padding-bottom: 60px;
-  
       .social-links {
         a {
           margin-right: 30px;
@@ -79,14 +81,14 @@
         padding-top: 20px;
       }
     }
-    
+
 
     &__legal {
       display: flex;
       justify-content: space-between;
       border-top: solid 1px black;
-      padding-top: 40px;
-      
+      padding-top: 37px;
+
       &__left {
         display: flex;
         flex-direction: column;
@@ -94,7 +96,7 @@
 
       &__right {
         display: flex;
-    
+
         a {
           padding-left: 50px;
         }
@@ -102,7 +104,7 @@
 
       img {
         max-width: 100px;
-        padding-bottom: 10px;
+        padding-bottom: 14px;
       }
 
       @include media-query($small) {
@@ -113,9 +115,9 @@
         &__right {
           flex-direction: column;
           padding-top: 5px;
-    
+
           a {
-            padding: 5px 0; 
+            padding: 5px 0;
           }
         }
       }
@@ -124,9 +126,9 @@
 
   @include media-query($small) {
     .footer {
-      padding: $mobile-margin;
+      padding: 60px $mobile-margin;
       padding-bottom: 200px;
-      
+
       ul {
       }
     }
