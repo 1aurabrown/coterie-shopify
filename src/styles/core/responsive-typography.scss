@@ -2,10 +2,25 @@
 @mixin responsive-typography($breakpoint: '') {
   // sass-lint:disable no-important
 
+
+  .#{$breakpoint}headline-xl {
+    @include headline();
+    font-size: 5.2rem;
+    line-height: 6.1rem;
+    letter-spacing: .15rem;
+  }
+
   .#{$breakpoint}headline-l {
     @include headline();
     font-size: 4.3rem;
     line-height: 5.1rem;
+    letter-spacing: .15rem;
+  }
+
+  .#{$breakpoint}headline-s{
+    @include headline();
+    font-size: 2.3rem;
+    line-height: 2.4rem;
     letter-spacing: .15rem;
   }
 
