@@ -2,14 +2,13 @@
   "current": {
     "color_body_text": "#000000",
     "color_form": "#9c9d99",
-    "color_arc_bg": "#fff8e9",
     "color_main_bg": "#fdf1d8",
     "color_footer_bg": "#000000",
     "color_icon": "#fffffe",
     "share_image": "",
-    "social_twitter_link": "#",
-    "social_facebook_link": "#",
-    "social_instagram_link": "#",
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/CoterieBaby",
+    "social_instagram_link": "https:\/\/www.instagram.com\/coterie",
     "favicon": "",
     "checkout_header_image": "",
     "checkout_logo_image": "",
@@ -25,6 +24,18 @@
     "checkout_accent_color": "#197bbd",
     "checkout_button_color": "#197bbd",
     "checkout_error_color": "#e32c2b",
+    "color_arc_bg": "#fff8e9",
+    "color_text": "#3d4246",
+    "color_sale_text": "#557B97",
+    "color_button": "#557B97",
+    "color_button_text": "#fff",
+    "color_small_button_text_border": "#3d4246",
+    "color_text_field_text": "#000",
+    "color_text_field_border": "#949494",
+    "color_text_field": "#fff",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
     "color_borders": "#e8e9eb",
     "color_body_bg": "#fff",
     "type_header_font": "work_sans_n6",
@@ -36,6 +47,17 @@
     "share_twitter": true,
     "share_pinterest": true,
     "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+        }
+      },
       "email-capture": {
         "type": "email-capture",
         "settings": {
@@ -46,22 +68,55 @@
           "confirmation_headline": "Thank you!",
           "confirmation_copy": "Check your email for confirmation."
         }
+      },
+      "1547129767850": {
+        "type": "homepage-hero",
+        "blocks": {
+          "1547132100335": {
+            "type": "button",
+            "settings": {
+              "label": "Shos 3-Day Pack",
+              "url": "#"
+            }
+          },
+          "1547132114716": {
+            "type": "button",
+            "settings": {
+              "label": "Shop 5-Day Pack",
+              "url": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1547132100335",
+          "1547132114716"
+        ],
+        "settings": {
+          "desktop_image": "shopify:\/\/shop_images\/baby-in-basket.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/baby-in-blankets.jpg",
+          "heading": "The Coterie Diaper",
+          "subline": "A softer, safer and more absorbent diaper setting a new industry standard for quality."
+        }
       }
     },
     "content_for_index": [
-      "hero",
-      "featured-collections",
-      "feature-row",
-      "slideshow"
+      "1547129767850"
     ]
   },
   "presets": {
     "Default": {
-      "color_body_text": "#000000",
-      "color_form": "#9c9d99",
-      "color_arc_bg": "#fff8e9",
-      "color_main_bg": "#fdf1d8",
-      "color_footer_bg": "#000000",
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button_text_border": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_text_field_border": "#949494",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
       "image_overlay_opacity": 40,
       "color_body_bg": "#fff",
       "type_header_font": "work_sans_n6",
@@ -73,8 +128,47 @@
       "share_twitter": true,
       "share_pinterest": true,
       "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {
+              }
+            },
+            "link_list-1": {
+              "type": "link_list",
+              "settings": {
+              }
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+              }
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "link_list",
+            "link_list-1",
+            "text",
+            "newsletter"
+          ],
+          "settings": {
+          }
+        }
       },
       "content_for_index": [
+
       ]
     }
   }

@@ -1,54 +1,90 @@
-<footer>
+<footer data-section-id="{{ section.id }}" data-section-type="footer" class="footer">
 
-  {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-  <ul>
-    {% for social in social_accounts %}
-      {%- assign social_handle = social | handleize -%}
-      {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-      {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
-
-      {% if settings[social_link] != blank %}
-        <li>
-          <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-            {% include social_icon %}
-            <span class="icon-fallback-text">{{ social }}</span>
-          </a>
-        </li>
+  <div class="footer__top body-s">
+    <div class="footer__left">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="footer__left__contact">
+            <strong class="body-xs footer__left__contact__prompt">{{ block.settings.label }}</strong>
+            {% assign address = block.settings.email_address %}
+            <a href="{{ 'mailto:' | append: address }}" class="footer__left__contact__address" target="_blank">
+              {{ address }}
+            </a>
+          </div>
+        {% endfor %}
       {% endif %}
 
-    {% endfor %}
-  </ul>
+      <div class="footer__social small--hide">
+        {% include 'social-links' %}
+      </div>
+    </div>
 
-  {% if section.settings.show_payment_icons %}
-    {% unless shop.enabled_payment_types == empty %}
-      <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-      <ul class="payment-icons">
-        {% for type in shop.enabled_payment_types %}
-          <li>
-            {{ type | payment_type_svg_tag: class: 'icon' }}
-          </li>
+    <div class="footer__right body-xs">
+      {%- assign footer_linklist = section.settings.footer_linklist -%}
+
+      {% if linklists[footer_linklist].links.size > 0 %}
+          {% for link in linklists[footer_linklist].links %}
+          <div class="footer__right__menu">
+            <strong><a href="{{ link.url }}">{{ link.title }}</a></strong>
+            {% if link.links.size > 0 %}
+              <ul>
+                {% for sublink in link.links %}
+                  <li>
+                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="footer__social medium-up--hide">
+      {% include 'social-links' %}
+    </div>
+  </div>
+
+  <div class="footer__legal body-xs">
+    <div class="footer__legal__left">
+      {{ "logo.svg" | asset_url | img_tag: shop.name }}
+      <small>&copy;{{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}</small>
+    </div>
+
+    <div class="footer__legal__right">
+      {%- assign footer_legal = section.settings.footer_legal -%}
+      {% if linklists[footer_legal].links.size > 0 %}
+        {% for link in linklists[footer_legal].links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
         {% endfor %}
-      </ul>
-    {% endunless %}
-  {% endif %}
-
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+      {% endif %}
+    </div>
   </div>
 </footer>
 
 {% schema %}
   {
     "name": "Footer",
+    "blocks": [
+      {
+        "type": "contact_info",
+        "name": "Contact Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Contact Prompt",
+            "default": "Have a question?"
+          },
+          {
+            "type": "text",
+            "id": "email_address",
+            "label": "Email Address",
+            "default": "Hello@Coterie.com"
+          }
+        ]
+      }
+    ],
     "settings": [
       {
         "type": "link_list",
@@ -61,8 +97,18 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
+      },
+      {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Copyright Text",
+        "default": "Coterie Baby, Inc. All Rights Reserved."
+      },
+      {
+        "type": "link_list",
+        "id": "footer_legal",
+        "label": "Legal menu"
       }
     ]
   }
-
 {% endschema %}
