@@ -1,0 +1,21 @@
+.homepage-copy {
+  &__button {
+    display: block;
+    margin: 15px auto 15px 0;
+  }
+  &__buttons {
+    margin-top: 36px;
+  }
+  @include media-query($small) {
+    margin: $mobile-margin;
+    &__subline {
+      margin-top: 14px;
+    }
+    &__buttons {
+      margin-top: $mobile-margin;
+    }
+    &__button {
+      width: 100%;
+    }
+  }
+}

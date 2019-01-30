@@ -2,7 +2,15 @@ import $ from 'jquery';
 
 // Email Submit
 
-module.exports = function onSignupSubmit($container, selector, options = {}) {
+
+module.exports = function onSignupSubmit($containerEl, selector, options = {}) {
+  var $container;
+  if ($containerEl.hasClass('email-capture')){
+    $container = $containerEl;
+  } else {
+    $container = $('.email-capture', $containerEl);
+  }
+  if (!($container.length > 0)) { return; }
   $container.on('submit', selector, function(e){
     e.preventDefault();
     var $el = $(e.target);
@@ -37,8 +45,6 @@ module.exports = function onSignupSubmit($container, selector, options = {}) {
         $container.attr('data-state', 'error');
       },
       success: function(data) {
-        $email.prop('disabled', false);
-        $submit.prop('disabled', false);
 
         if ((data.result === "success") ||
           (data.msg && data.msg.indexOf("already subscribed") >= 0) ||
@@ -48,10 +54,16 @@ module.exports = function onSignupSubmit($container, selector, options = {}) {
             $container.attr('data-state', 'success');
           }, 1000);
           if (options.success) {
+            if (options.reenableOnSuccess) {
+              $email.prop('disabled', false);
+              $submit.prop('disabled', false);
+            }
             options.success();
           }
         } else {
           $container.attr('data-state', 'error');
+          $email.prop('disabled', false);
+          $submit.prop('disabled', false);
           if (options.error) {
             options.error();
           }

@@ -1,0 +1,61 @@
+<section data-section-id="{{ section.id }}" data-section-type="homepage-buttons" class="homepage-buttons__section">
+
+  <div class="homepage-buttons__heading body-s bold text-center">
+    {{ section.settings.heading }}
+  </div>
+
+  <div class="homepage-buttons__buttons medium-up--body-xxl small--body-l clearfix">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+      <a href="{{ product | url }}" alt="{{ product.title }}" class="homepage-buttons__button medium-up--one-half one-whole text-center {% cycle 'background-dark-yellow medium-up--float-left', 'background-light-yellow medium-up--float-right' %}">
+        {% if section.settings.prefix.size > 0 %}
+          <span class="bold small--hide">{{ section.settings.prefix }}</span>
+        {% endif %}
+        <span>{{ product.title }}</span>
+      </a>
+    {% endfor %}
+
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "class": "homepage-buttons",
+    "name": "Product Buttons",
+    "max_blocks": 2,
+    "blocks": [
+      {
+        "type": "button",
+        "name": "CTA Button",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Two Ways to Shop"
+      },
+      {
+        "type": "text",
+        "id": "prefix",
+        "label": "Button Product Title Prefix",
+        "default": "Shop"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Buttons",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,57 @@
+<div class="email-bar__section" data-section-id="{{ section.id }}" data-section-type="email-bar">
+  {% capture before_html %}
+    <span class="body-s">{{ section.settings.heading }}</span>
+  {% endcapture %}
+  {% capture success_html %}
+    <span class="medium-up--body-l small--body-s">{{ section.settings.confirmation }}</span>
+  {% endcapture %}
+
+  {% include 'email-capture',
+    class: "background-light-yellow"
+    before_html: before_html,
+    input_class: "body-l"
+    placeholder: section.settings.placeholder
+    error: 'Please check the email address you entered.'
+    success_html:
+  %}
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Email Capture",
+    "class": "email-bar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Email Form"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Register to grow with us:"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Email Placeholder",
+        "default": "Your email"
+      },
+      {
+        "type": "textarea",
+        "id": "confirmation",
+        "label": "Confirmation Message",
+        "default": "Thank you!"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Email Capture",
+        "category": "Homepage"
+      }
+    ]
+  }
+
+{% endschema %}

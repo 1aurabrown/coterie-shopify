@@ -2,20 +2,50 @@
 @mixin responsive-typography($breakpoint: '') {
   // sass-lint:disable no-important
 
+
+  .#{$breakpoint}headline-xl {
+    @include headline();
+    font-size: 5.2rem;
+    line-height: 6.1rem;
+    letter-spacing: .15rem;
+  }
+
   .#{$breakpoint}headline-l {
     @include headline();
     font-size: 4.3rem;
-    line-height: 5.2rem;
+    line-height: 5.1rem;
+    letter-spacing: .15rem;
   }
-  .#{$breakpoint}body-m {
-    @include body();
-    font-size: 1.5rem;
+
+  .#{$breakpoint}headline-s{
+    @include headline();
+    font-size: 2.3rem;
     line-height: 2.4rem;
+    letter-spacing: .15rem;
   }
-  .#{$breakpoint}body-l {
-    @include body();
+
+  .#{$breakpoint}body-xs {
+    font-family: $font-body;
+    font-size: 1.5rem;
+    line-height: 2.6rem;
+  }
+
+  .#{$breakpoint}body-s {
+    font-family: $font-body;
     font-size: 2.0rem;
-    line-height: 2.7rem;
+    line-height: 2.9rem;
+  }
+
+  .#{$breakpoint}body-l {
+    font-family: $font-body;
+    font-size: 3.6rem;
+    line-height: 4.8rem;
+  }
+
+  .#{$breakpoint}body-xxl {
+    font-family: $font-body;
+    font-size: 5.8rem;
+    line-height: 6.8rem;
   }
 }
 
