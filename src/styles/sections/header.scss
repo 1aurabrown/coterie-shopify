@@ -117,6 +117,7 @@ $header-height-mobile: 60px;
       justify-content: space-between;
 
       &__nav{
+        position: fixed;
         &__primary, &__submenu__list {
           left: -100%;
         }
