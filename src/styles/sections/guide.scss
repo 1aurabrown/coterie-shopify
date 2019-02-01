@@ -43,7 +43,7 @@
   .guide-block {
 
     &__top {
-      padding-top: 70px;
+      margin-top: 70px;
       cursor: pointer;
     }
     &__heading {
@@ -80,7 +80,15 @@
         transition: transform .2s;
         transform: rotateZ(0);
       }
-
+      &__click {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 0;
+        padding-bottom: 100%;
+        transform: translateY(-50%);
+      }
     }
 
     &.active {
@@ -91,6 +99,9 @@
         &::after {
           transform: rotateZ(135deg);
         }
+        &__click {
+          display: block;
+        }
       }
     }
   }
@@ -100,7 +111,7 @@
     .guide-block {
 
       &__top {
-        padding-top: 35px;
+        margin-top: 35px;
       }
       &__heading {
         padding-bottom: 35px;
