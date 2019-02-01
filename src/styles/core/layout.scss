@@ -22,8 +22,14 @@ hr {
   margin: 50px auto;
 }
 
+.background-white {
+  background: $white;
+}
 .background-light-yellow {
   background: $color-yellow-light;
+}
+.background-light-medium {
+  background: $color-yellow-medium;
 }
 
 .background-dark-yellow {

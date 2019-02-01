@@ -24,6 +24,17 @@
     letter-spacing: .15rem;
   }
 
+  .#{$breakpoint}numeral-l{
+    @include numeral();
+    font-size: 1.8rem;
+    line-height: 2.9rem;
+  }
+
+  .#{$breakpoint}numeral-s{
+    @include numeral();
+    font-size: 1.1rem;
+    line-height: 2.4rem;
+  }
   .#{$breakpoint}body-xs {
     font-family: $font-body;
     font-size: 1.5rem;

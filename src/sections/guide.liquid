@@ -1,0 +1,113 @@
+<section data-section-id="{{ section.id }}" data-section-type="guide" class="guide__section text-center">
+  <div class="guide__hero">
+    <div class="guide__hero__image">
+      {% include 'responsive-image', image: section.settings.mobile_image, wrapper_class: 'medium-up--hide' %}
+      {% include 'responsive-image', image: section.settings.desktop_image, wrapper_class: 'small--hide' %}
+    </div>
+    <div class="guide__hero__text">
+      <h1 class="guide__hero__text__title medium-up--headline-xl small--headline-s">{{ page.title }}</h1>
+    </div>
+  </div>
+  <div class="guide__content background-light-yellow medium-up--body-s small--body-xs">
+    <div class="guide__content__intro">
+      {{ section.settings.top_text }}
+    </div>
+    <div class="guide__content__blocks">
+      {% for block in section.blocks %}
+        {% assign settings = block.settings %}
+        <div class="guide-block" data-section>
+
+          <div class="guide-block__top" data-section-toggle>
+            <div class="guide-margin">
+              <div class="guide-block__number small--numeral-s medium-up--numeral-l">
+                {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}
+              </div>
+
+              <div class="guide-block__heading small--headline-s medium-up--headline-xl ">{{ settings.heading }}
+              </div>
+
+              <span class="guide-block__divider"><span class="guide-block__divider__click"></span></span>
+            </div>
+          </div>
+          <div class="background-white guide-block__bottom" data-section-body>
+            <div class="guide-block__body guide-margin">{{ settings.body }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="guide__content__outro background-dark-yellow">
+      <div class="guide-margin">
+        <div>{{ section.settings.bottom_text }}</div>
+        <div class="guide__content__outro__email">
+          <a target="_blank" href="mailto:{{ section.settings.email_address }}">
+            {{ section.settings.email_cta }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "class": "guide",
+    "name": "Diaper Guide",
+    "blocks": [
+      {
+        "type": "section",
+        "name": "Section",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Our Promise"
+          },
+          {
+            "type": "richtext",
+            "id": "body",
+            "label": "Body",
+            "default": "<p>A better diaper in every way.</p>"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "richtext",
+        "id": "top_text",
+        "label": "Intro Text",
+        "default": "<p>All of your Coterie diaper questions answered, so you don’t have to ask.</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "bottom_text",
+        "label": "Outro Text",
+        "default": "<p>We’re here for you at every step of the parenthood journey. Reach out with any questions along the way.</p>"
+      },
+      {
+        "type": "text",
+        "id": "email_cta",
+        "label": "Email CTA Text",
+        "default": "Email Us"
+      },
+      {
+        "type": "text",
+        "id": "email_address",
+        "label": "Email Address",
+        "default": "hello@coterie.com"
+      }
+    ]
+  }
+{% endschema %}
