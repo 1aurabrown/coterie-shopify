@@ -1,0 +1,116 @@
+@include sticky-header('.template-cart');
+
+.cart {
+  @include full-height();
+  a {
+    text-decoration: none;
+  }
+
+  &__subtotals, &__messages, &__buttons .button {
+    p {
+      margin: 0
+    }
+    margin: 1em 0;
+  }
+  &__subtotals {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  table {
+    tr, td {
+      padding: 0;
+    }
+    td.image img {
+      padding: 6px 0;
+    }
+    td {
+      white-space: nowrap;
+    }
+    p {
+      margin: 0;
+    }
+    tbody {
+      vertical-align: top;
+    }
+    a, img {
+      display: block;
+    }
+    table {
+      td {
+        padding-left: 60px;
+      }
+      margin-left: -60px;
+    }
+  }
+  &.empty {
+
+  }
+
+  @include media-query($medium-up) {
+    &__header, &__content-inner {
+      padding: 0 $desktop-margin;
+      max-width: 1200px;
+    }
+    &__header {
+      margin: 35px auto;
+    }
+    &__content-inner {
+      margin: 50px auto;
+    }
+    &__buttons {
+      display: flex;
+      justify-content: flex-end;
+      .button {
+        margin-left: 1em
+      }
+    }
+    table {
+      td.image {
+        padding-right: 15px;
+      }
+      td.info, td.image {
+        padding-bottom: 15px;
+      }
+      td.info {
+        padding-left: 15px;
+      }
+    }
+  }
+  @include media-query($small) {
+    &__header, &__content-inner {
+      padding: 0 $mobile-margin;
+      max-width: 1200px;
+    }
+    &__header {
+      margin: 20px auto;
+
+    }
+    &__content-inner {
+      margin: 35px auto;
+    }
+    table table td {
+      display: block;
+    }
+    table {
+      td.image {
+        max-width: 50vw;
+        padding-right: 10px;
+      }
+      td.info {
+        padding-left: 10px;
+      }
+    }
+    td.info, td.image {
+      padding-bottom: 10px;
+    }
+    &__buttons {
+      .button {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}

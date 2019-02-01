@@ -7,9 +7,10 @@
  */
 
 import $ from 'jquery';
-import Variants from '@shopify/theme-variants';
+import _ from 'lodash';
 import {formatMoney} from '@shopify/theme-currency';
 import {register} from '@shopify/theme-sections';
+import QuantitySelect from '../modules/quantity-select';
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -18,21 +19,13 @@ const selectors = {
   comparePriceText: '[data-compare-text]',
   originalSelectorId: '[data-product-select]',
   priceWrapper: '[data-price-wrapper]',
-  productImageWrapper: '[data-product-image-wrapper]',
-  productFeaturedImage: '[data-product-featured-image]',
   productJson: '[data-product-json]',
   productPrice: '[data-product-price]',
-  productThumbs: '[data-product-single-thumbnail]',
-  singleOptionSelector: '[data-single-option-selector]',
   optionVariant: '[data-option-variant]',
-  decreaseButton: '[data-decrease]',
-  increaseButton: '[data-increase]',
-  quantityInput: '[data-quantity-input]',
-  quantityLabel: '[data-quantity-label]'
+  quantitySelect: '[data-quantity-select]'
 };
 
 const cssClasses = {
-  activeThumbnail: 'active-thumbnail',
   hide: 'hide',
 };
 
@@ -61,133 +54,32 @@ register('product', {
       $(selectors.productJson, this.$container).html(),
     );
 
-    const options = {
-      $container: this.$container,
-      enableHistoryState: this.$container.data('enable-history-state') || false,
-      singleOptionSelector: selectors.singleOptionSelector,
-      originalSelectorId: selectors.originalSelectorId,
-      product: this.productSingleObject,
-    };
-
     this.settings = {};
-    this.variants = new Variants(options);
-    this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
+    this.quantitySelect = new QuantitySelect({
+      container: $(selectors.quantitySelect, this.$container)[0],
+      namespace: this.namespace,
+      getInventory: function() {
+        const $variantOptions = $(selectors.optionVariant, this.container)
+        const $variant = $variantOptions.filter(':checked');
+        return parseInt($variant.data().inventory)
+      }
+    });
 
-    this.$container.on(
-      `variantChange${this.namespace}`,
-      this.updateAddToCartState.bind(this),
-    );
+    $(selectors.optionVariant, this.$container).on('change' + this.namespace, this.variantChanged.bind(this))
 
-    this.$container.on('click' + this.namespace, selectors.decreaseButton,
-      this.decreaseQuantity.bind(this),
-    );
-
-    this.$container.on('click' + this.namespace, selectors.increaseButton,
-      this.increaseQuantity.bind(this),
-    );
-
-    this.$container.on(
-      `variantPriceChange${this.namespace}`,
-      this.updateProductPrices.bind(this),
-    );
-
-    if (this.$featuredImage.length > 0) {
-      this.$container.on(
-        `variantImageChange${this.namespace}`,
-        this.updateImages.bind(this),
-      );
-    }
-
-    this.initImageSwitch();
   },
 
-  initImageSwitch() {
-    const $productThumbs = $(selectors.productThumbs, this.$container);
-
-    if (!$productThumbs.length) {
-      return;
-    }
-
-    $productThumbs
-      .on('click', (evt) => {
-        evt.preventDefault();
-        const imageId = $(evt.currentTarget).data('thumbnail-id');
-        this.switchImage(imageId);
-        this.setActiveThumbnail(imageId);
-      })
-      .on('keyup', this.handleImageFocus.bind(this));
+  variantChanged(e) {
+    if (!($(e.target).is(':checked'))) { return; }
+    const variant = _.find(this.productSingleObject.variants, function(o) {
+      return (o.id == parseInt($(e.target).attr('data-option-variant')))
+    })
+    this.updateAddToCartState(variant)
+    this.updateProductPrices(variant)
+    this.quantitySelect.refresh();
   },
 
-  handleImageFocus(evt) {
-    if (evt.keyCode !== keyboardKeys.ENTER) {
-      return;
-    }
-
-    this.$featuredImage.filter(':visible').focus();
-  },
-
-  setActiveThumbnail(imageId) {
-    let newImageId = imageId;
-
-    // If "imageId" is not defined in the function parameter, find it by the current product image
-    if (typeof newImageId === 'undefined') {
-      newImageId = $(
-        `${selectors.productImageWrapper}:not('.${cssClasses.hide}')`,
-      ).data('image-id');
-    }
-
-    const $thumbnail = $(
-      `${selectors.productThumbs}[data-thumbnail-id='${newImageId}']`,
-    );
-
-    $(selectors.productThumbs)
-      .removeClass(cssClasses.activeThumbnail)
-      .removeAttr('aria-current');
-
-    $thumbnail.addClass(cssClasses.activeThumbnail);
-    $thumbnail.attr('aria-current', true);
-  },
-
-  switchImage(imageId) {
-    const $newImage = $(
-      `${selectors.productImageWrapper}[data-image-id='${imageId}']`,
-      this.$container,
-    );
-    const $otherImages = $(
-      `${selectors.productImageWrapper}:not([data-image-id='${imageId}'])`,
-      this.$container,
-    );
-    $newImage.removeClass(cssClasses.hide);
-    $otherImages.addClass(cssClasses.hide);
-  },
-
-  increaseQuantity() {
-    const $variantOptions = $(selectors.optionVariant, this.container)
-    const $variant = $variantOptions.filter(`[data-option-variant="${this.variants.currentVariant.id}"]`)
-    const inventory = parseInt($variant.data().inventory)
-    const value = Math.min(parseInt($(selectors.quantityInput).val()) + 1, inventory);
-    this.setQuantity(value);
-  },
-
-  decreaseQuantity() {
-    const value = Math.max(parseInt($(selectors.quantityInput).val()) - 1, 1);
-    this.setQuantity(value);
-  },
-
-  setQuantity(value) {
-    $(selectors.quantityInput).val(value);
-    $(selectors.quantityLabel).text(value);
-  },
-
-  /**
-   * Updates the DOM state of the add to cart button
-   *
-   * @param {boolean} enabled - Decides whether cart is enabled or disabled
-   * @param {string} text - Updates the text notification content of the cart
-   */
-  updateAddToCartState(evt) {
-    const variant = evt.variant;
-
+  updateAddToCartState(variant) {
     if (variant) {
       $(selectors.priceWrapper, this.$container).removeClass(cssClasses.hide);
     } else {
@@ -208,22 +100,7 @@ register('product', {
     }
   },
 
-  updateImages(evt) {
-    const variant = evt.variant;
-    const imageId = variant.featured_image.id;
-
-    this.switchImage(imageId);
-    this.setActiveThumbnail(imageId);
-  },
-
-  /**
-   * Updates the DOM with specified prices
-   *
-   * @param {string} productPrice - The current price of the product
-   * @param {string} comparePrice - The original price of the product
-   */
-  updateProductPrices(evt) {
-    const variant = evt.variant;
+  updateProductPrices(variant) {
     const $comparePrice = $(selectors.comparePrice, this.$container);
     const $compareEls = $comparePrice.add(
       selectors.comparePriceText,
@@ -250,5 +127,6 @@ register('product', {
    */
   onUnload() {
     this.$container.off(this.namespace);
+    this.quantitySelect.unload();
   },
 });

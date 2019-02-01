@@ -176,6 +176,12 @@
   }
 }
 
+@mixin full-height() {
+  min-height: calc(100vh - #{$header-height-desktop});
+  @include media-query($small) {
+    min-height: calc(100vh - #{$header-height-mobile});
+  }
+}
 
 @mixin text-styles($size: $body-xs) {
   p {

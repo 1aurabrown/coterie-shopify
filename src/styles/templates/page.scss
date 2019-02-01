@@ -1,6 +1,7 @@
 @include sticky-header('.template-page--default');
 
 .page {
+  @include full-height();
   &__content-inner {
     @include text-styles('body-xs' );
   }

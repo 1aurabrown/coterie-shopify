@@ -1,0 +1,23 @@
+.quantity-select {
+  margin-bottom: 1em;
+
+  &__change {
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: '';
+      width: 2em;
+      height: 2em;
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+  &__label{
+    width: 1.5em;
+    text-align: center;
+    display: inline-block
+  }
+}

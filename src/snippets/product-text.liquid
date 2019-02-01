@@ -24,53 +24,35 @@
 
   <form action="/cart/add" method="post" enctype="multipart/form-data" class="product__form body-xs">
     {% unless product.has_only_default_variant %}
-      {% for option in product.options_with_values %}
-        <div class="selector-wrapper js">
+        <div class="selector-wrapper">
           <label class="product__heading">
-            {{ option.name }}
+            Size
           </label>
 
           <div class="product__option-values">
-            {% for value in option.values %}
+            {% for variant in product.variants %}
               <input
-                data-single-option-selector
-                data-index="option{{ option.position }}"
-                name="{{ option.name }}"
+                data-option-variant="{{ variant.id }}"
+                data-inventory="{{ variant.inventory_quantity }}"
+                name="id"
                 type="radio"
-                id="{{ option.name }}--{{ forloop.index0 }}"
-                value="{{ value | escape }}"
-                {% if option.selected_value == value %}checked="checked"{% endif %}>
+                id="{{ variant.id }}"
+                value="{{ variant.id }}"
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+                {% if variant == current_variant %}checked="checked"{% endif %}>
               </input>
-              <label for="{{ option.name }}--{{ forloop.index0 }}">{{ value }}</label>
+              <label for="{{ variant.id }}">{{ variant.title }}</label>
             {% endfor %}
           </div>
         </div>
-      {% endfor %}
     {% endunless %}
 
-    <select name="id" class="no-js" data-product-select>
-      {% for variant in product.variants %}
-        <option
-          {% if variant == current_variant %}selected="selected"{% endif %}
-          {% unless variant.available %}disabled="disabled"{% endunless %}
-          data-option-variant="{{ variant.id }}"
-          data-inventory="{{ variant.inventory_quantity }}"
-          value="{{ variant.id }}">
-            {{ variant.title }}
-        </option>
-      {% endfor %}
-    </select>
 
     <label for="Quantity" class="product__heading">
       {{ 'products.product.quantity' | t }}
     </label>
 
-    <div class="product__quantity-select body-s">
-      <span data-decrease class="product__quantity-change">-</span>
-        <input class="hide" data-quantity-input type="number" id="Quantity" name="quantity" value="1" min="1">
-        <label for="quantity" class="product__quantity-label" data-quantity-label>1</label>
-      <span data-increase class="product__quantity-change">+</span>
-    </div>
+    {% include 'quantity-select', id: 'Quantity', name: "quantity", min: 1, initial_value: 1 , quantity_class: 'body-s bold' %}
 
     <button
       class="button button--black product__button"

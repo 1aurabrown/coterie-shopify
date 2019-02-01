@@ -1,0 +1,21 @@
+<div class="quantity-select {{ quantity_class }}" data-quantity-select>
+  <span data-decrease class="quantity-select__change">-</span>
+    <input
+      class="hide"
+      data-quantity-input
+      type="number"
+      id="{{ input_id }}"
+      name="{{ name }}"
+      value="{{ initial_value }}"
+      min="{{ min }}"
+      max="{{ max }}">
+
+    <label
+      for="{{ input_id }}"
+      class="quantity-select__label"
+      data-quantity-label>
+        {{ initial_value }}
+    </label>
+
+  <span data-increase class="quantity-select__change">+</span>
+</div>

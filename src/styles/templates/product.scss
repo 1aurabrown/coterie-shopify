@@ -20,9 +20,6 @@
     }
   }
 
-  &__quantity-select {
-    font-weight: bold;
-  }
 
   &__option-values {
 
@@ -38,6 +35,9 @@
       &:checked + label {
         border-bottom: 1px solid black;
       }
+      &:disabled + label {
+        color: #777777;
+      }
     }
   }
   &__heading {
@@ -48,17 +48,7 @@
   &__title, &__heading {
     margin: 1em 0 auto 0;
   }
-  &__quantity-select {
-    margin-bottom: 1em;
-  }
-  &__quantity-change {
-    cursor: pointer;
-  }
-  &__quantity-label{
-    width: 1.5em;
-    text-align: center;
-    display: inline-block
-  }
+
   &__price {
     margin: 2em 0;
   }

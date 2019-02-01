@@ -23,14 +23,14 @@
       display: block;
       margin: 0;
       padding: $grid-gutter / 2;
-      text-align: right;
+      text-align: left;
     }
 
     td::before {
-      content: attr(data-label);
-      float: left;
-      padding-right: 10px;
-      text-align: center;
+      // content: attr(data-label);
+      // float: left;
+      // padding-right: 10px;
+      // text-align: center;
     }
   }
 
