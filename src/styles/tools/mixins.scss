@@ -7,7 +7,6 @@
     padding: 0;
   }
 }
-
 /**
  * Sets a media query for the specified breakpoint
  *
@@ -72,6 +71,7 @@
     display: none !important;
   }
 }
+
 
 
 /*================ Responsive Text Alignment Helper ================*/
@@ -170,6 +170,13 @@
   clip: auto;
 }
 
+@mixin plain-paragraph() {
+  p {
+    margin: 0;
+  }
+}
+
+
 @mixin text-styles($size: $body-xs) {
   p {
     @extend .#{$size};
@@ -179,7 +186,7 @@
     font-weight: bold;
     margin: 1em 0 0 0;
   }
-  p {
-    margin: 0;
-  }
+  @include plain-paragraph();
 }
+
+

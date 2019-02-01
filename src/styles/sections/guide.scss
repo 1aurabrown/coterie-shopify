@@ -1,0 +1,131 @@
+.guide {
+  @include plain-paragraph()
+  .guide-margin {
+    margin-left: $mobile-margin;
+    margin-right: $mobile-margin;
+    @include media-query($medium-up) {
+      max-width: 734px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__hero {
+    position: relative;
+    &__text {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+  &__content {
+    &__intro {
+      padding-top: 70px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__blocks {
+      padding-bottom: 70px;
+    }
+    &__outro {
+      padding: 70px 0;
+      &__email {
+        margin-top: 60px;
+      }
+    }
+  }
+  .guide-block {
+
+    &__top {
+      padding-top: 70px;
+      cursor: pointer;
+    }
+    &__heading {
+      padding-bottom: 70px;
+      padding-top: 20px;
+    }
+    &__body {
+      padding: 70px 0 100px;
+      p:not(:first-child) {
+        margin-top: 1em;
+      }
+    }
+    &__bottom {
+      display: none;
+      pointer-events: none;
+    }
+    &__divider {
+      margin: 0 auto;
+      position: relative;
+      display: block;
+      width: 20px;
+      height: 1px;
+      @include media-query($medium-up) {
+        width: 45px;
+      }
+      &::before, &::after {
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: 100%;
+        background: black;
+        width: 100%;
+        transition: transform .2s;
+        transform: rotateZ(0);
+      }
+
+    }
+
+    &.active {
+      .guide-block__divider {
+        &::before {
+          transform: rotateZ(45deg);
+        }
+        &::after {
+          transform: rotateZ(135deg);
+        }
+      }
+    }
+  }
+}
+@include media-query($small) {
+  .guide {
+    .guide-block {
+
+      &__top {
+        padding-top: 35px;
+      }
+      &__heading {
+        padding-bottom: 35px;
+        padding-top: 8px;
+      }
+      &__body {
+        padding: 35px 0 50px;
+      }
+    }
+    &__content {
+      &__intro {
+        padding-top: 54px;
+        max-width: 350px;
+        padding-left: $mobile-margin;
+        padding-right: $mobile-margin;
+      }
+      &__blocks {
+        padding-bottom: 35px;
+      }
+      &__outro {
+        padding: 54px 0;
+        &__email {
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}

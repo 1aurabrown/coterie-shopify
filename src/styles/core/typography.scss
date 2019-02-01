@@ -40,12 +40,21 @@ a:focus {
   font-weight: normal;
 }
 
+@mixin numeral() {
+  font-family: $font-numeral;
+  font-weight: normal;
+}
+
 .body {
   @include body();
 }
 
 .headline {
   @include headline();
+}
+
+.numeral {
+  @include numeral();
 }
 
 a, a:hover, a:active, a:visited {

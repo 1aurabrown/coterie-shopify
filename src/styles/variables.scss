@@ -1,3 +1,25 @@
+
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+
+
 $desktop-margin: 45px;
 $mobile-margin: 25px;
 
@@ -14,8 +36,10 @@ $homepage-gap-desktop-s: 90px;
 $color-body-text: $black;
 $color-icon: $white;
 
-$color-yellow-dark: #fdf1d8;
-$color-yellow-light: #FFF8E9;
+$color-yellow-base: #F9E1B7 ;
+$color-yellow-dark: tint(#F9E1B7, 20%);
+$color-yellow-medium: tint(#F9E1B7, 40%);
+$color-yellow-light: tint(#F9E1B7, 60%);
 
 // Background colors
 $color-body: $white;
@@ -40,6 +64,7 @@ $color-success-bg: #000000;
 
 // Typography
 $font-heading: 'SangBleuSans', serif;
+$font-numeral: 'Praktika', sans-serif;
 $font-body: 'PostGrotesk', sans-serif;
 $font-body-weight: normal;
 $font-body-style: normal;
