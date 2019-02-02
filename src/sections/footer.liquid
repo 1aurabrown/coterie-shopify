@@ -25,12 +25,22 @@
       {% if linklists[footer_linklist].links.size > 0 %}
           {% for link in linklists[footer_linklist].links %}
           <div class="footer__right__menu">
-            <strong><a href="{{ link.url }}">{{ link.title }}</a></strong>
+            <strong>
+              {% if link.url == '#' %}
+                <span>{{ link.title }}</span>
+              {% else %}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
+            </strong>
             {% if link.links.size > 0 %}
               <ul>
                 {% for sublink in link.links %}
                   <li>
-                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                    {% if sublink.url == '#' %}
+                      <span>{{ sublink.title }}</span>
+                    {% else %}
+                      <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>
@@ -55,7 +65,11 @@
       {%- assign footer_legal = section.settings.footer_legal -%}
       {% if linklists[footer_legal].links.size > 0 %}
         {% for link in linklists[footer_legal].links %}
-          <a href="{{ link.url }}">{{ link.title }}</a>
+          &nbsp;{% if link.url == '#' %}
+            <span>{{ link.title }}</span>
+          {% else %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endif %}
         {% endfor %}
       {% endif %}
     </div>

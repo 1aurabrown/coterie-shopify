@@ -1,29 +1,40 @@
 @include sticky-header('.template-page--default');
-
+@include sticky-header('.template-404')
 .page {
+  @include full-height();
+  display: flex;
+  flex-direction: column;
   &__content-inner {
     @include text-styles('body-xs' );
   }
+  &__content {
+    flex-grow: 1;
+  }
   @include media-query($medium-up) {
-    &__header, &__content-inner {
-      padding: 50px 110px;
+    &__header-inner, &__content-inner {
+      padding: 50px $desktop-margin;
       margin-left: auto;
       margin-right: auto;
       max-width: 1200px;
     }
-    &__header {
+    &__header-inner {
       padding-top: 35px;
     }
   }
+  @include media-query($large-up) {
+    &__header-inner, &__content-inner {
+      padding: 50px 110px;
+    }
+  }
   @include media-query($small) {
-    &__header, &__content-inner {
-      padding: 35px $mobile-margin;
+    &__header-inner, &__content-inner {
+      padding: 30px $mobile-margin;
       margin-left: auto;
       margin-right: auto;
       max-width: 1200px;
     }
-    &__header {
-      padding-top: 25px;
+    &__header-inner {
+      padding-top: 20px;
     }
   }
 }

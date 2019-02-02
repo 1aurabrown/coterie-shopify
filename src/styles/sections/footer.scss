@@ -4,9 +4,8 @@
   }
 
   .footer {
-    padding: 85px $desktop-margin;
+    padding: 85px $desktop-margin $desktop-margin;
     color: $color-body-text;
-    padding-bottom: 200px;
 
     &__top {
       display: flex;
@@ -126,8 +125,7 @@
 
   @include media-query($small) {
     .footer {
-      padding: 60px $mobile-margin;
-      padding-bottom: 200px;
+      padding: 60px $mobile-margin $mobile-margin;
 
       ul {
       }

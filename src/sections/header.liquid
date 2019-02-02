@@ -29,9 +29,11 @@
               <ul>
                 {% for childlink in link.links %}
                   <li>
-                    <a href="{{ childlink.url }}">
-                      {{ childlink.title }}
-                    </a>
+                    {% if childlink.url == '#' %}
+                      <span>{{ childlink.title }}</span>
+                    {% else %}
+                      <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>
@@ -39,9 +41,15 @@
           </li>
         {% else %}
           <li>
-            <a class="header__nav__primary__link" href="{{ link.url }}">
-              {{ link.title }}
-            </a>
+            {% if link.url == '#' %}
+              <span class="header__nav__primary__link">
+                {{ link.title }}
+              </span>
+            {% else %}
+              <a class="header__nav__primary__link" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            {% endif %}
           </li>
         {% endif %}
       {% endfor %}
