@@ -6,6 +6,9 @@
     text-decoration: none;
   }
 
+  &__content-inner {
+    @include text-styles('body-s' );
+  }
   &__subtotals, &__messages {
     p {
       margin: 0
@@ -69,6 +72,9 @@
       }
       td.info {
         padding-left: 15px;
+        td.main {
+          width: 200px;
+        }
       }
     }
   }
