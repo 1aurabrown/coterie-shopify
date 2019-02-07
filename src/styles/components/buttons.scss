@@ -17,10 +17,59 @@
   }
 }
 
+
+@mixin black-hover () {
+  &:active {
+    background: black;
+    color: white;
+  }
+  @media (hover:hover) {
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
+
+@mixin yellow-button-hover() {
+  @include black-hover ();
+  &[disabled], &.disabled {
+    pointer-events: none;
+    color: gray;
+  }
+}
+
+.button--light-yellow {
+  @extend .background-light-yellow;
+  @include yellow-button-hover();
+}
+
+.button--medium-yellow {
+  @extend .background-medium-yellow;
+  @include yellow-button-hover();
+}
+
+.button--dark-yellow {
+  @extend .background-dark-yellow;
+  @include yellow-button-hover();
+}
+
 .button--black {
   background: $black;
   color: $white;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $color-yellow-medium;
+      color: black;
+    }
+  }
+
+  &:active {
+    background-color: $color-yellow-medium;
+  };
+
   &[disabled], &.disabled {
     background: lighten($black, 45%);
+    pointer-events: none;
   }
 }

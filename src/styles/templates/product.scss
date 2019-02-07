@@ -2,18 +2,33 @@
 
 .product {
   @include media-query($medium-up) {
-    &__image-wrapper {
-      width: 60%;
+    &__images {
+      width: 50%;
     }
     &__text {
+      position: sticky;
+      position: -webkit-sticky;
+      top: $header-height-desktop;
       width: 40%;
       padding: 0 $desktop-margin;
     }
   }
 
   @include media-query($small) {
+    .flickity-viewport {
+      transition: height .2s;
+    }
+    .flickity-prev-next-button {
+      background: transparent;
+      &:focus {
+        outline: none;
+      };
+    }
+    &__slide {
+      width: 100%;
+    }
     &__text {
-      padding: 0 $mobile-margin $mobile-margin;
+      padding: 2em $mobile-margin $mobile-margin;
     }
     &__button {
       width: 100%;
@@ -41,19 +56,32 @@
     }
   }
   &__heading {
-    @extend .body-s;
     font-weight: bold;
     display: block;
-  }
-  &__title, &__heading {
     margin: 1em 0 auto 0;
   }
-
-  &__price {
-    margin: 2em 0;
+  &__text {
+    display: none;
   }
   &__description {
-    @include text-styles('body-s' );
+    @include product-table();
+    padding-top: 2em;
+    @include text-styles('body-xs' );
+    &__heading {
+      cursor: pointer;
+      &:after {
+        content: '\00a0\00a0+';
+      }
+      &.active:after {
+        content: '\00a0\00a0-';
+      }
+    }
+    &__section {
+      display: none;
+    }
+  }
+  &__button {
+    margin-top: 1em
   }
 }
 

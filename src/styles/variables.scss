@@ -29,7 +29,6 @@ $black: black;
 $homepage-text-width-desktop: 38%;
 $homepage-inset-desktop: $desktop-margin * 2;
 
-$homepage-gap-desktop-l: 163px;
 $homepage-gap-desktop-m: 110px;
 $homepage-gap-desktop-s: 90px;
 
@@ -37,9 +36,9 @@ $color-body-text: $black;
 $color-icon: $white;
 
 $color-yellow-base: #F9E1B7 ;
-$color-yellow-dark: tint(#F9E1B7, 20%);
-$color-yellow-medium: tint(#F9E1B7, 40%);
-$color-yellow-light: tint(#F9E1B7, 60%);
+$color-yellow-dark: tint($color-yellow-base, 20%);
+$color-yellow-medium: tint($color-yellow-base, 40%);
+$color-yellow-light: tint($color-yellow-base, 60%);
 
 // Background colors
 $color-body: $white;

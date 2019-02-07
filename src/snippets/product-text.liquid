@@ -1,5 +1,6 @@
-<div class="product__text medium-up--float-right">
+<div class="product__text medium-up--float-right" data-product-text>
   <h1 class="body-xxl product__title">{{ product.title }}</h1>
+
 
   <div data-price-wrapper class="product__heading product__price">
     <span data-product-price>
@@ -16,8 +17,8 @@
     {% endif %}
   </div>
 
-  <div class="product__description body-s">
-    <div class="rte">
+  <div data-product-description class="product__description body-xs">
+    <div >
       {{ product.description }}
     </div>
   </div>
@@ -52,7 +53,7 @@
       {{ 'products.product.quantity' | t }}
     </label>
 
-    {% include 'quantity-select', id: 'Quantity', name: "quantity", min: 1, initial_value: 1 , quantity_class: 'body-s bold' %}
+    {% include 'quantity-select', id: 'Quantity', name: "quantity", min: 1, initial_value: 1 , quantity_class: 'body-xs bold' %}
 
     <button
       class="button button--black product__button"

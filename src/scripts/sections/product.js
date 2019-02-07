@@ -11,6 +11,8 @@ import _ from 'lodash';
 import {formatMoney} from '@shopify/theme-currency';
 import {register} from '@shopify/theme-sections';
 import QuantitySelect from '../modules/quantity-select';
+import Breakpoints from 'breakpoints-js';
+import Flickity from 'flickity-fade';
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -21,8 +23,15 @@ const selectors = {
   priceWrapper: '[data-price-wrapper]',
   productJson: '[data-product-json]',
   productPrice: '[data-product-price]',
+  images: '[data-product-images]',
   optionVariant: '[data-option-variant]',
-  quantitySelect: '[data-quantity-select]'
+  quantitySelect: '[data-quantity-select]',
+  description: '[data-product-description]',
+  text: '[data-product-text]',
+  headings: 'h1, h2, h3, h4, h5, h6',
+  section: '[data-product-section]',
+  sectionHeading: '[data-product-heading]',
+  activeHeading: '.active[data-product-heading]'
 };
 
 const cssClasses = {
@@ -42,6 +51,11 @@ const keyboardKeys = {
 register('product', {
   onLoad() {
     this.$container = $(this.container);
+    this.$description = $(selectors.description, this.$container);
+    this.$text = $(selectors.text, this.$container);
+    $('table, td, tr', this.$description).attr({ style: ''});
+    this.$headings = $(selectors.headings, this.$description);
+
     this.namespace = `.${this.id}`;
 
     // Stop parsing if we don't have the product json script tag when loading
@@ -66,7 +80,49 @@ register('product', {
     });
 
     $(selectors.optionVariant, this.$container).on('change' + this.namespace, this.variantChanged.bind(this))
+    this.setupSections();
+    this.setupFlickity();
 
+    this.$container.on('click' + this.namespace, selectors.sectionHeading, function(e) {
+      $(selectors.activeHeading, this.$container)
+        .not($(e.target))
+        .removeClass('active')
+        .next(selectors.section)
+        .slideUp(200)
+      $(e.target).next(selectors.section).slideToggle(200);
+      $(e.target).toggleClass('active');
+    })
+  },
+
+  setupFlickity() {
+    Breakpoints();
+    console.log(Breakpoints)
+    const _this = this;
+
+    Breakpoints.on('xs', {
+        enter: function() {
+          _this.flickity = new Flickity($(selectors.images, _this.$container)[0], {
+            pageDots: false,
+            adaptiveHeight: true,
+            wrapAround: true,
+            fade: true
+        })
+      },
+      leave: function() {
+        _this.flickity.destroy();
+      }
+    });
+  },
+
+  setupSections() {
+    const _this = this;
+    console.log(this.$headings)
+    this.$sections = this.$headings.map(function (i, el) {
+      $(el).attr('data-product-heading', 'data-product-heading').addClass("product__description__heading" );
+      return $(el).nextUntil(_this.$headings).wrapAll('<div data-product-section="data-product-section" class="product__description__section" />');
+    })
+    this.$headings.first().before($(selectors.priceWrapper, this.$container));
+    this.$text.fadeIn(200);
   },
 
   variantChanged(e) {

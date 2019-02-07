@@ -4,17 +4,21 @@
   {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 
-  {% for image in product.images %}
-    {% if forloop.index == 2 %}
-      {% include 'product-text' %}
-    {% endif %}
-    {% include 'responsive-image' with
-      image: image,
-      wrapper_class: 'product__image-wrapper medium-up--float-left',
-      image_class: 'product__image',
-    %}
-  {% endfor %}
 
+
+  <div class="product__images medium-up--float-left" data-product-images>
+    {% for image in product.images %}
+      <div class="product__slide">
+      {% include 'responsive-image' with
+        image: image,
+        wrapper_class: 'product__image-wrapper',
+        image_class: 'product__image',
+      %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include 'product-text' %}
 
   {% unless product == empty %}
     <script type="application/json" data-product-json>

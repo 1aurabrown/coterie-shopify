@@ -193,6 +193,69 @@
     margin: 1em 0 0 0;
   }
   @include plain-paragraph();
+
 }
 
+
+@mixin product-table() {
+  ul {
+    margin: 0;
+    padding-left: 1.5em;
+  }
+  table, td, tr {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+  }
+
+  table, tbody, td {
+    display: block;
+  }
+
+  @include media-query($medium-up) {
+
+    td {
+      min-width: 30px;
+    }
+    td:not(:first-child) {
+      text-align: center;
+      width: 30px;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+
+    td:not(:last-child) {
+      padding-right: 4px;
+    }
+    tr {
+      display: flex;
+    }
+
+    table, tbody, tr {
+      width: 100%;
+    }
+
+    td:first-child {
+      flex-grow: 1;
+    }
+
+  }
+  @include media-query($small) {
+    tbody {
+      display: flex;
+      tr {
+        display: block;
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+
+        td {
+          width: 100%;
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
 

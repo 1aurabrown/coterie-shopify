@@ -1,7 +1,6 @@
 .homepage-buttons {
   &__button {
     display: block;
-    text-align: center;
     padding: 64px $mobile-margin;
     text-decoration: none;
   }
@@ -15,10 +14,14 @@
     }
     &__button {
       padding: 82px $desktop-margin;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       span {
         display: block;
 
       }
     }
   }
+
 }

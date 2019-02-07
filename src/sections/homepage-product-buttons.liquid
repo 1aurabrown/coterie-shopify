@@ -1,17 +1,19 @@
 <section data-section-id="{{ section.id }}" data-section-type="homepage-buttons" class="homepage-buttons__section">
 
-  <div class="homepage-buttons__heading body-s bold text-center">
+  <div class="homepage-buttons__heading body-s bold">
     {{ section.settings.heading }}
   </div>
 
   <div class="homepage-buttons__buttons medium-up--body-xxl small--body-l clearfix">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
-      <a href="{{ product.url }}" alt="{{ product.title }}" class="homepage-buttons__button medium-up--one-half one-whole text-center {% cycle 'background-dark-yellow medium-up--float-left', 'background-light-yellow medium-up--float-right' %}">
-        {% if section.settings.prefix.size > 0 %}
-          <span class="bold small--hide">{{ section.settings.prefix }}</span>
-        {% endif %}
-        <span>{{ product.title }}</span>
+      <a href="{{ product.url }}" alt="{{ product.title }}" class="homepage-buttons__button medium-up--one-half one-whole small--text-center {% cycle 'button--dark-yellow medium-up--float-left', 'button--light-yellow medium-up--float-right' %}">
+        <div class="homepage-buttons__button__text">
+          {% if section.settings.prefix.size > 0 %}
+            <span class="bold small--hide">{{ section.settings.prefix }}</span>
+          {% endif %}
+          <span>{{ product.title }}</span>
+        </div>
       </a>
     {% endfor %}
 
