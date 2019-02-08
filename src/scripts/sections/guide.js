@@ -20,7 +20,7 @@ register('guide', {
 
     if(window.location.hash) {
       var $section = this.$sections.has(window.location.hash).first()
-      this.activateSection($section);
+      this.activateSection($section)
     }
   },
 
