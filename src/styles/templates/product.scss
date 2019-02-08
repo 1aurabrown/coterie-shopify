@@ -71,8 +71,8 @@
   }
   &__description {
     @include product-table();
-    padding-top: 2em;
     @include text-styles('body-xs' );
+    marign-top: 2em;
     &__heading {
       cursor: pointer;
       &:after {
@@ -84,6 +84,7 @@
     }
     &__section {
       display: none;
+      @include plain-paragraph();
     }
   }
   &__button {

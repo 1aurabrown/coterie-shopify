@@ -1,8 +1,7 @@
 <section data-section-id="{{ section.id }}" data-section-type="cart" class="cart__section page {% if cart.item_count < 1 %}empty{% endif %}">
   <div class="page__header cart__header"><h1 class="medium-up--headline-l small--headline-s page__header-inner cart__header-inner">{{ 'cart.general.title' | t }}</h1></div>
 
-  <div class="page__content cart__content background-light-yellow">
-  <div class="page__content-inner cart__content-inner background-light-yellow medium-up--body-s small--body-xs ">
+  <div class="page__content cart__content medium-up--body-s small--body-xs ">
     {% if cart.item_count > 0 %}
 
       <form action="/cart" method="post" novalidate>
@@ -142,7 +141,7 @@
         <p>{{ 'cart.general.cookies_required' | t }}</p>
       </div>
     {% endif %}
-  </div></div>
+  </div>
 </section>
 
 {% schema %}

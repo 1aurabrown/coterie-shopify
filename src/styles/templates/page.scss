@@ -1,18 +1,45 @@
-.template-page--default, .template-404{
+.template-page--default, .template-404, #privacy-policy {
   @include sticky-header();
 }
+
+.shopify-policy__container {
+  @extend .page;
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+.shopify-policy__title {
+  @extend .page__header;
+  h1 {
+    @extend .page__header-inner;
+  }
+}
+
+.shopify-policy__body {
+  @extend .page__content;
+}
+
 .page {
   @include full-height();
+  @extend .background-light-yellow;
   display: flex;
   flex-direction: column;
-  &__content-inner {
-    @include text-styles('body-xs' );
+  &__header {
+    @extend .background-white;
+    text-align: left;
+  }
+  &__header-inner {
+    @extend .medium-up--headline-xl;
+    @extend .small--headline-s;
   }
   &__content {
+    @include text-styles('body-xs' );
+    width: 100%;
     flex-grow: 1;
   }
   @include media-query($medium-up) {
-    &__header-inner, &__content-inner {
+    &__header-inner, &__content {
       padding: 50px $desktop-margin;
       margin-left: auto;
       margin-right: auto;
@@ -23,12 +50,12 @@
     }
   }
   @include media-query($large-up) {
-    &__header-inner, &__content-inner {
+    &__header-inner, &__content {
       padding: 50px 110px;
     }
   }
   @include media-query($small) {
-    &__header-inner, &__content-inner {
+    &__header-inner, &__content {
       padding: 30px $mobile-margin;
       margin-left: auto;
       margin-right: auto;

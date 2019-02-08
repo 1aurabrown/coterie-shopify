@@ -8,7 +8,7 @@
     text-decoration: none;
   }
 
-  &__content-inner {
+  &__content {
     @include text-styles('body-s' );
   }
   &__subtotals, &__messages {
