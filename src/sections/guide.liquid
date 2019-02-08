@@ -16,7 +16,7 @@
       {% for block in section.blocks %}
         {% assign settings = block.settings %}
         <div class="guide-block" data-section>
-
+          <span class="guide-block__anchor" id="{{ settings.heading | handleize }}"></span>
           <div class="guide-block__top" data-section-toggle>
             <div class="guide-margin">
               <div class="guide-block__number small--numeral-s medium-up--numeral-l">

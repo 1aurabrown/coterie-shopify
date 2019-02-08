@@ -212,14 +212,14 @@
     display: block;
   }
 
-  @include media-query($medium-up) {
+  @include media-query($large-up) {
 
     td {
       min-width: 30px;
     }
     td:not(:first-child) {
       text-align: center;
-      width: 30px;
+      width: 35px;
       flex-shrink: 0;
       flex-grow: 0;
     }
@@ -240,7 +240,7 @@
     }
 
   }
-  @include media-query($small) {
+  @include media-query($medium-down) {
     tbody {
       display: flex;
       tr {

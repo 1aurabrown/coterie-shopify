@@ -1,4 +1,6 @@
-@include sticky-header('.template-cart');
+.template-cart {
+  @include sticky-header();
+}
 
 .cart {
   @include full-height();

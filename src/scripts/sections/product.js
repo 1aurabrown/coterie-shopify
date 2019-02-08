@@ -117,6 +117,7 @@ register('product', {
   setupSections() {
     const _this = this;
     console.log(this.$headings)
+    this.$description.find(':empty').remove();
     this.$sections = this.$headings.map(function (i, el) {
       $(el).attr('data-product-heading', 'data-product-heading').addClass("product__description__heading" );
       return $(el).nextUntil(_this.$headings).wrapAll('<div data-product-section="data-product-section" class="product__description__section" />');

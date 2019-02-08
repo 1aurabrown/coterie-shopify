@@ -41,7 +41,14 @@
     }
   }
   .guide-block {
-
+    position: relative;
+    &__anchor {
+      display: block;
+      position: relative;
+      top: -250px;
+      visibility: hidden;
+      top: -$header-height-desktop;
+    }
     &__top {
       margin-top: 70px;
       cursor: pointer;

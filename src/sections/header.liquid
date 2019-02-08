@@ -14,6 +14,23 @@
 
   <div class="header__hamburger medium-up--hide" data-menu-toggle>{% include 'icon-hamburger' %}</div>
 
+<div class="header__desktop-left">
+  <header role="banner" class="header__logo">
+    {% if template.name == 'index' %}
+      <h1>
+    {% else %}
+      <div class="h1">
+    {% endif %}
+        <a href="/" class="logo-image">
+          {{ "logo.svg" | asset_url | img_tag: shop.name }}
+        </a>
+    {% if template.name == 'index' %}
+      </h1>
+    {% else %}
+      </div>
+    {% endif %}
+  </header>
+
   <nav role="navigation" class="header__nav" data-mobile-nav>
     <ul class="header__nav__primary">
       {% for link in linklists[section.settings.menu].links %}
@@ -55,23 +72,8 @@
       {% endfor %}
     </ul>
   </nav>
+</div>
 
-
-  <header role="banner" class="header__logo">
-    {% if template.name == 'index' %}
-      <h1>
-    {% else %}
-      <div class="h1">
-    {% endif %}
-        <a href="/" class="logo-image">
-          {{ "logo.svg" | asset_url | img_tag: shop.name }}
-        </a>
-    {% if template.name == 'index' %}
-      </h1>
-    {% else %}
-      </div>
-    {% endif %}
-  </header>
 
   <div class="header__right text-right">
     <a class="header__cart-button" href="/cart">

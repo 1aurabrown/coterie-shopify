@@ -1,4 +1,6 @@
-@include sticky-header('.template-product');
+.template-product {
+  @include sticky-header();
+}
 
 .product {
   @include media-query($medium-up) {
@@ -20,8 +22,12 @@
     }
     .flickity-prev-next-button {
       background: transparent;
+      svg {
+        fill: rgba(255, 255,255, .5);
+      }
       &:focus {
-        outline: none;
+        box-shadow: none;
+        outline: 0;
       };
     }
     &__slide {

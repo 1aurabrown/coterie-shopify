@@ -1,5 +1,6 @@
-@include sticky-header('.template-page--default');
-@include sticky-header('.template-404')
+.template-page--default, .template-404{
+  @include sticky-header();
+}
 .page {
   @include full-height();
   display: flex;

@@ -13,16 +13,25 @@ register('guide', {
     this.$container = $(this.container);
     this.namespace = `.${this.id}`;
     this.$sections = $(selectors.sections, this.$container);
+
     this.$sections.on('click' + this.namespace, selectors.sectionToggle, function(e) {
-      const $activeSection = $(selectors.activeSection, this.$container).not($(e.delegateTarget));
+      this.activateSection($(e.delegateTarget))
+    }.bind(this))
+
+    if(window.location.hash) {
+      var $section = this.$sections.has(window.location.hash).first()
+      this.activateSection($section);
+    }
+  },
+
+  activateSection($section) {
+    const $activeSection = $(selectors.activeSection, this.$container).not($section);
       $activeSection.removeClass('active')
       $(selectors.sectionBody, $activeSection).slideUp(200);
 
-      $(e.delegateTarget).toggleClass('active')
-      $(selectors.sectionBody, e.delegateTarget).slideToggle(200);
-    })
+      $section.toggleClass('active')
+      $(selectors.sectionBody, $section).slideToggle(200);
   },
-
   /**
    * Event callback for Theme Editor `section:unload` event
    */
