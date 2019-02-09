@@ -8,34 +8,36 @@
   text-decoration: none;
   user-select: none;
   appearance: none;
-  a {
-    text-decoration: none;
-  }
   height: 4.6rem;
   @include media-query($medium-up) {
     width: 230px;
   }
 }
 
+a.button {
+  line-height: 4.6rem;
+  text-decoration: none;
+}
 
-@mixin black-hover () {
-  &:active {
-    background: black;
-    color: white;
+
+@mixin black-hover() {
+  &:active, &:focus {
+    background: $black;
+    color: white !important;
   }
   @media (hover:hover) {
     &:hover {
-      background: black;
-      color: white;
+      background: $black;
+      color: white !important;
     }
   }
 }
 
 @mixin yellow-button-hover() {
-  @include black-hover ();
+  @include black-hover();
   &[disabled], &.disabled {
     pointer-events: none;
-    color: gray;
+    color: gray !important;
   }
 }
 
@@ -56,16 +58,17 @@
 
 .button--black {
   background: $black;
-  color: $white;
+  color: $white !important;
   @media (hover: hover) {
     &:hover {
-      background-color: $color-yellow-medium;
-      color: black;
+      background-color: $color-yellow-dark;
+      color: $black !important;
     }
   }
 
-  &:active {
-    background-color: $color-yellow-medium;
+  &:active, &:focus {
+    background-color: $color-yellow-dark;
+    color: $black !important;
   };
 
   &[disabled], &.disabled {

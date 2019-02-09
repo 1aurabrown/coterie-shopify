@@ -20,6 +20,8 @@ import {cookiesEnabled} from '@shopify/theme-cart';
 focusHash();
 bindInPageLinks();
 
+document.addEventListener("touchstart", function(){}, true);
+
 // Apply a specific class to the html element for browser support of cookies.
 if (cookiesEnabled()) {
   document.documentElement.className = document.documentElement.className.replace(

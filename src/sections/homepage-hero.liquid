@@ -14,9 +14,9 @@
       </div>
       <div class="homepage-hero__buttons body-xs homepage-copy__buttons">
         {% for block in section.blocks %}
-          <button class="button button--black homepage-hero__button homepage-copy__button"><a href="{{ block.settings.url }}">
+          <a class="button button--black homepage-hero__button homepage-copy__button" href="{{ block.settings.url }}">
             {{ block.settings.label }}
-          </a></button>
+          </a>
         {% endfor %}
       </div>
     </div>
