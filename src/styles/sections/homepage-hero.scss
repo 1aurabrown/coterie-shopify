@@ -9,11 +9,11 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      padding: $desktop-margin $desktop-margin 72px;
       width: $homepage-text-width-desktop;
     }
     &__copy {
       max-width: 230px;
+      margin: $header-height-desktop 6vw 5vw 6vw;
     }
     &__subline {
       margin-top: 25px;

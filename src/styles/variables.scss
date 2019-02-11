@@ -117,4 +117,4 @@ $breakpoints: (
     - Default is no push classes
     - Will not work if `styles/global/grid.scss` is removed
 ==============================================================================*/
-$breakpoint-has-widths: ($small, $medium-up, $large-up);
+$breakpoint-has-widths: ($small, $medium-down, $medium-up, $large-up);
