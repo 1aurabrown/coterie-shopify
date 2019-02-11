@@ -82,7 +82,8 @@ register('product', {
     $(selectors.optionVariant, this.$container).on('change' + this.namespace, this.variantChanged.bind(this))
     this.setupSections();
     this.setupFlickity();
-
+    this.checkTextHeight();
+    $(window).on('resize' + this.namespace, _.throttle(this.checkTextHeight.bind(this), 200))
     this.$container.on('click' + this.namespace, selectors.sectionHeading, function(e) {
       $(selectors.activeHeading, this.$container)
         .not($(e.target))
@@ -96,7 +97,6 @@ register('product', {
 
   setupFlickity() {
     Breakpoints();
-    console.log(Breakpoints)
     const _this = this;
 
     Breakpoints.on('xs', {
@@ -114,9 +114,16 @@ register('product', {
     });
   },
 
+  checkTextHeight() {
+    if (this.$text.outerHeight() + this.$text.offset().top > $(window).height()) {
+      this.$text.removeClass('sticky')
+    } else {
+      this.$text.addClass('sticky')
+    }
+  },
+
   setupSections() {
     const _this = this;
-    console.log(this.$headings)
     this.$description.find(':empty').remove();
     this.$sections = this.$headings.map(function (i, el) {
       $(el).attr('data-product-heading', 'data-product-heading').addClass("product__description__heading" );
@@ -184,6 +191,7 @@ register('product', {
    */
   onUnload() {
     this.$container.off(this.namespace);
+    $(window).off(this.namespace);
     this.quantitySelect.unload();
   },
 });

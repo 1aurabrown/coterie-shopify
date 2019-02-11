@@ -3,16 +3,20 @@
 }
 
 .product {
+  position: relative;
   @include media-query($medium-up) {
     &__images {
       width: 50%;
     }
     &__text {
-      position: sticky;
-      position: -webkit-sticky;
-      top: $header-height-desktop;
+      right: 0;
       width: 40%;
-      padding: 0 $desktop-margin;
+      padding: 0 $desktop-margin $desktop-margin;
+      &.sticky {
+        top: $header-height-desktop;
+        position: -webkit-sticky;
+        position: sticky;
+      }
     }
   }
 

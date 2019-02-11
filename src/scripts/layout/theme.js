@@ -4,9 +4,7 @@ import 'lazysizes/plugins/rias/ls.rias';
 import 'lazysizes/plugins/bgset/ls.bgset';
 import 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
-
 import {load} from '@shopify/theme-sections';
-
 
 import '../sections/header';
 
