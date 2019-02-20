@@ -8,12 +8,16 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      min-width: $homepage-text-width-desktop;
-      width: 420px;
+      width: $homepage-text-width-desktop;
       padding: $desktop-margin;
     }
     &__subline {
       margin-top: 68px;
+    }
+  }
+  @include media-query($medium) {
+    &__copy-container {
+      width: 420px
     }
   }
 }
