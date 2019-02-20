@@ -8,11 +8,9 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: $homepage-text-width-desktop;
+      min-width: $homepage-text-width-desktop;
+      width: 420px;
       padding: $desktop-margin;
-    }
-    &__copy {
-      max-width: 288px;
     }
     &__subline {
       margin-top: 68px;

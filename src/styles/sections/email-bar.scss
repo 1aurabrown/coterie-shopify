@@ -1,4 +1,7 @@
 .email-bar {
+  @include media-query($medium-up) {
+    margin-top: $homepage-gap-desktop-m;;
+  }
   .email-capture {
     padding: $desktop-margin;
     position: relative;

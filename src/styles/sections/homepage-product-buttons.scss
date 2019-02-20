@@ -1,4 +1,5 @@
 .homepage-buttons {
+
   &__button {
     display: block;
     padding: 64px $mobile-margin;
@@ -9,13 +10,17 @@
   }
   @include media-query($medium-up) {
     margin-bottom: $homepage-gap-desktop-m;
+    &__buttons {
+      display: flex;
+    }
     &__heading {
       padding: 64px $desktop-margin;
     }
     &__button {
+      width: 50%;
       padding: 82px $desktop-margin;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       span {
         display: block;
